@@ -1,10 +1,13 @@
 import org.gradle.api.tasks.Exec
 import org.apache.tools.ant.taskdefs.condition.Os
 
+defaultTasks 'clean', 'npm', 'buildng', 'build'
+
 buildscript {
 	ext {
 		springBootVersion = '1.4.3.RELEASE'
 		npmCommand = Os.isFamily(Os.FAMILY_WINDOWS) ? 'npm.cmd' : 'npm'
+		ngBuildCommand = Os.isFamily(Os.FAMILY_WINDOWS) ? 'ng.cmd' : 'ng'
 	}
 	repositories {
 		mavenCentral()
@@ -33,6 +36,23 @@ task npmBin << {
 	outputs.dir "node_modules"
 
 	tasks.npmBin.execute()
+}
+
+task buildng(type: Exec) {
+
+    commandLine = [ngBuildCommand, "build"]
+
+    //store the output instead of printing to the console:
+    standardOutput = new ByteArrayOutputStream()
+
+    //extension method stopTomcat.output() can be used to obtain the output:
+    ext.output = {
+        return standardOutput.toString()
+    }
+
+//    standardOutput = System.out
+//    errorOutput = System.out
+
 }
 
 apply plugin: 'java'
