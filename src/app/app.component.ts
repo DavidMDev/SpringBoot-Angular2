@@ -1,10 +1,33 @@
-import { Component } from '@angular/core';
-
+import {Component, Input} from '@angular/core';
+import {Http, Response} from '@angular/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+  private messageUrl: string;
+  message: string;
+
+  constructor(private http: Http) {
+  }
+
+
+  @Input()
+  name: string = "";
+
+  sendMessage() {
+    this.getMessage(this.name);
+  }
+
+  public getMessage(name) {
+    if (name != "") {
+      this.messageUrl = "http://localhost:8080/hello?name=" + name;
+    } else {
+      this.messageUrl = "http://localhost:8080/hello";
+    }
+    this.http.get(this.messageUrl).subscribe((data: Response) => {
+      this.message = data.text();
+    });
+  }
 }

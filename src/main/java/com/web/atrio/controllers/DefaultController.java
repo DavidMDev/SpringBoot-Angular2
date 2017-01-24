@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class DefaultController {
-	
+
 	@RequestMapping("/hello")
-	public ResponseEntity sayHello(@RequestParam(value="name", defaultValue="bob") String name){
-		return new ResponseEntity<String>("Hello, " + name, HttpStatus.OK);
+	public ResponseEntity sayHello(@RequestParam(value="name", defaultValue="Bob") String name){
+		return new ResponseEntity<String>("Hello " + name + ", the app is working!", HttpStatus.OK);
 	}
   }

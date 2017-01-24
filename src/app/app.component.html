@@ -1,3 +1,4 @@
-<h1>
-  {{title}}
-</h1>
+<h2>What is your name?</h2>
+<input type="text" [(ngModel)]="name" />
+<button (click)="sendMessage()">Submit</button>
+<h1>{{message}}</h1>
