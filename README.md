@@ -31,6 +31,7 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used angular
 - Run  `ng build` in root directory to build the angular app
 - Run `./gradlew build` in root directory to build the spring-boot application. Make sure to have done an `ng build` before or you won't have a front end
 - Change the working directory to `build/libs/` and run `java -jar project-0.0.1-SNAPSHOT.jar` to launch the server
+- Once the project is launched, go to `http://localhost:8080` in your web browser and test the app
 
 ### Testing
 
