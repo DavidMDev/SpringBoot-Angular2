@@ -21,6 +21,8 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used angular
 - Folder `src/main/` contains the sources for the Spring-boot app
 - Folder `src/test/` contains the sources for the Spring-boot app JUnit testing
 
+- The compiled AngularJS 2 javascript files are put into the folder `src/main/resources/static/`. Once the Spring-boot server is launched they are available at `http://localhost:8080`.
+
 ## Commands
 
 ### Launching
