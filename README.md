@@ -19,6 +19,7 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used angular
 - Exactly the same as Spring-boot or AngularJS 2, except the files for each application are mixed
 - Folder `src/` contains the sources AngularJS app (folders and files in `src/main/` excluded)
 - Folder `src/main/` contains the sources for the Spring-boot app
+- Folder `src/test/` contains the sources for the Spring-boot app JUnit testing
 
 ## Commands
 
