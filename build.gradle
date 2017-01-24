@@ -30,16 +30,24 @@ task npmBin << {
 
 // Install packages from package.json
 	task npm(type: Exec) {
-	description = "Grab NodeJS dependencies (from package.json)"
+	description = "Install NodeJS dependencies from package.json file"
 	commandLine = [npmCommand, "install"]
 	inputs.file "package.json"
 	outputs.dir "node_modules"
+
+	//extension method stopTomcat.output() can be used to obtain the output:
+    ext.output = {
+        return standardOutput.toString()
+    }
+
+    standardOutput = System.out
+    errorOutput = System.out
 
 	tasks.npmBin.execute()
 }
 
 task buildng(type: Exec) {
-
+	description = "Install Build AngularJS 2 frontend app"
     commandLine = [ngBuildCommand, "build"]
 
     //store the output instead of printing to the console:
@@ -50,8 +58,8 @@ task buildng(type: Exec) {
         return standardOutput.toString()
     }
 
-//    standardOutput = System.out
-//    errorOutput = System.out
+    standardOutput = System.out
+    errorOutput = System.out
 
 }
 
