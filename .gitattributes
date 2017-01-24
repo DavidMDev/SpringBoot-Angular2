@@ -1,0 +1,3 @@
+*.java linguist-language=Java
+*.ts linguist-language=Typescript
+*.html linguist-language=html5
