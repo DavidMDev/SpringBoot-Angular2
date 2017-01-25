@@ -4,18 +4,25 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { AppRoutingModule }     from './app-routing.module';
+import {TodoComponent} from "./todolist/todo.component";
+import {TodoService} from "./todolist/todo.service";
+import {HelloworldComponent} from "./helloworld/helloworld.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    TodoComponent,
+    AppComponent,
+    HelloworldComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [TodoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

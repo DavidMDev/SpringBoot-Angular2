@@ -1,4 +1,6 @@
-<h2>What is your name?</h2>
-<input type="text" [(ngModel)]="name" />
-<button (click)="sendMessage()">Submit</button>
-<h1>{{message}}</h1>
+<h1>Welcome!</h1>
+<a routerLink="/" routerLinkActive="active">Home</a>
+<a routerLink="/list" routerLinkActive="active">Todo list</a>
+<a routerLink="/helloworld" routerLinkActive="active">Hello world</a>
+<router-outlet></router-outlet>
+

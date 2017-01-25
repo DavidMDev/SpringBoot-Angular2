@@ -1,0 +1,19 @@
+<h2>My todo list</h2>
+{{tasks}}
+  <ul>
+    <li *ngFor="let task of tasks">
+      <span>{{task.name}}</span>
+      <span>{{task.description}}</span>
+      <button class="delete"
+              (click)="delete(task);">x</button>
+    </li>
+  </ul>
+
+  <label>Task name:</label> <input #task_name />
+<br>
+  <label>Task description:</label> <input #task_description />
+<br>
+  <button (click)="add(task_name.value, task_description.value); task_name.value=''; task_description.value='';">
+    Add
+  </button>
+

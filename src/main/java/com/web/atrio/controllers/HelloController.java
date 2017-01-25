@@ -7,10 +7,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class DefaultController {
+public class HelloController {
 
 	@RequestMapping("/hello")
-	public ResponseEntity sayHello(@RequestParam(value="name", defaultValue="Bob") String name){
+	public ResponseEntity<String> sayHello(@RequestParam(value = "name", defaultValue = "Bob") String name) {
+		System.out.println("Hello world requested!");
 		return new ResponseEntity<String>("Hello " + name + ", the app is working!", HttpStatus.OK);
 	}
-  }
+}
