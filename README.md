@@ -26,7 +26,7 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used angular
 ### Example modules
 - There are 2 example modules in the project, "To do list" and "Hello world", each example has a Spring-boot controller for the back-end and its own folder for the front-end.
 - The hello world module allows you to enter a name and submit, to which the server replies with a message.
-- The to do list module allows you to create/delete/view elements from a to do list which is stored in the back-end.
+- The to do list is a CRUD module its is stored in the back-end.
 
 ## Commands
 
