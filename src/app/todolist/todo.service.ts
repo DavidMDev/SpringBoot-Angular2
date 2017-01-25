@@ -20,7 +20,6 @@ export class TodoService {
   }
 
   delete(id: number){
-    console.log(id);
     const url = `${this.tasksUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
@@ -39,5 +38,21 @@ export class TodoService {
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
+  }
+
+  public getTask(id: number){
+    const url = `${this.tasksUrl}/${id}`;
+    return this.http.get(url, {headers: this.headers})
+      .toPromise()
+      .then(res => <Task>(res.json()))
+      .catch(this.handleError);
+  }
+
+  public modifyTask(task: Task){
+    const url = `${this.tasksUrl}`;
+    return this.http.put(url, JSON.stringify(task), {headers : this.headers})
+      .toPromise()
+      .then(res => <Task>(res.json()))
+      .catch(this.handleError);
   }
 }

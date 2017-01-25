@@ -35,6 +35,17 @@ public class TodoController {
 		return new ResponseEntity<List<Task>>(tasks, HttpStatus.CREATED);
 	}
 
+	@RequestMapping(value = "/tasks/{id}", method = RequestMethod.GET)
+	public ResponseEntity<Task> getTask(@PathVariable(value = "id") int id){
+		Task result = null;
+		for(Task task: tasks){
+			if(task.getId() == id){
+				result = task;
+			}
+		}
+		return new ResponseEntity<Task>(result, HttpStatus.OK);
+	}
+	
 	@RequestMapping(value = "/tasks/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<List<Task>> deleteTask(@PathVariable(value = "id") int id) {
 		Task toDelete = null;
@@ -48,5 +59,17 @@ public class TodoController {
 		}
 		System.out.println("Task deleted!");
 		return new ResponseEntity<List<Task>>(tasks, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/tasks", method = RequestMethod.PUT)
+	public ResponseEntity<Task> updateTask(@RequestBody Task toUpdate){
+		for(Task task : tasks){
+			if(task.getId() == toUpdate.getId()){
+				task.setDescription(toUpdate.getDescription());
+				task.setName(toUpdate.getName());
+				return new ResponseEntity<Task>(task, HttpStatus.CREATED);
+			}
+		}
+		return new ResponseEntity(null, HttpStatus.NOT_FOUND);
 	}
 }

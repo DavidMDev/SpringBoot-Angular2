@@ -40,4 +40,8 @@ export class TodoComponent implements OnInit {
         this.tasks = tasks;
       });
   }
+
+  goto(task: Task): void {
+    this.router.navigate(['/detail', task.id]);
+  }
 }

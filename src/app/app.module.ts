@@ -8,12 +8,14 @@ import { AppRoutingModule }     from './app-routing.module';
 import {TodoComponent} from "./todolist/todo.component";
 import {TodoService} from "./todolist/todo.service";
 import {HelloworldComponent} from "./helloworld/helloworld.component";
+import {TodoDetailComponent} from "./todolist/todo-detail.component";
 
 @NgModule({
   declarations: [
     TodoComponent,
     AppComponent,
-    HelloworldComponent
+    HelloworldComponent,
+    TodoDetailComponent
   ],
   imports: [
     BrowserModule,

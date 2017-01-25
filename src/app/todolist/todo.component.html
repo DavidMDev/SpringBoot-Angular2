@@ -1,9 +1,10 @@
 <h2>My todo list</h2>
-{{tasks}}
   <ul>
     <li *ngFor="let task of tasks">
       <span>{{task.name}}</span>
       <span>{{task.description}}</span>
+      <button class="details"
+              (click)="goto(task)">Details</button>
       <button class="delete"
               (click)="delete(task);">x</button>
     </li>
