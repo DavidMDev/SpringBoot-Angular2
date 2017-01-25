@@ -38,6 +38,9 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used angular
 - Change the working directory to `build/libs/` and run `java -jar project-0.0.1-SNAPSHOT.jar` to launch the server
 - Once the project is launched, go to `http://localhost:8080` in your web browser and test the app
 
+### CORS error with chrome
+- Make a shortcut to chrome web browser on the desktop, edit the properties of the shortcut and under "target" add the following `--disable-web-security --user-data-dir="c:/chromeUserData"`
+
 ### Testing
 
 - Run `./gradlew test` to run the Spring-boot JUnit tests
