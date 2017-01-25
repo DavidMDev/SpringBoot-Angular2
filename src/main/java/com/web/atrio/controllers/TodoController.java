@@ -43,6 +43,7 @@ public class TodoController {
 				result = task;
 			}
 		}
+		System.out.print("Task requested!");
 		return new ResponseEntity<Task>(result, HttpStatus.OK);
 	}
 	
@@ -70,6 +71,7 @@ public class TodoController {
 				return new ResponseEntity<Task>(task, HttpStatus.CREATED);
 			}
 		}
+		System.out.print("Task updated!");
 		return new ResponseEntity(null, HttpStatus.NOT_FOUND);
 	}
 }
