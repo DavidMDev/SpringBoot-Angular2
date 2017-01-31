@@ -2,17 +2,17 @@
 
 ## About
 
-The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used angular-cli, which can be found [here](https://github.com/angular/angular-cli) to generate the Angular 2 front-end of the application and spring initializr, which can be found [here](http://start.spring.io/) to generate the back-end spring-boot of the application
+The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used [angular-cli](https://github.com/angular/angular-cli) to generate the Angular 2 front-end of the application and spring [spring initialzr](http://start.spring.io/) to generate the back-end spring-boot of the application
 
 ## Requirements
 
-- npm and nodejs, you can install nodejs and npm [here](https://nodejs.org/)
-- Java SDK, which you can find [here](https://www.oracle.com/downloads/index.html)
+- [node.js and npm](https://nodejs.org/)
+- [Java SDK](https://www.oracle.com/downloads/index.html)
 
 ### Optional
 
-- the AngularJS command line interface, [here](https://github.com/angular/angular-cli)
-- Gradle, [here](https://gradle.org/)
+- [AngularJS command line interface](https://github.com/angular/angular-cli)
+- [Gradle](https://gradle.org/)
 
 ## Project file structure
 
