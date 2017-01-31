@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class NouveauDossierPage {
+export class SpringbootAngular2Page  {
   navigateTo() {
     return browser.get('/');
   }
