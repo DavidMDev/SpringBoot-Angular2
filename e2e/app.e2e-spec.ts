@@ -1,10 +1,10 @@
-import { SpringbootAngular2Page } from './app.po';
+import { NouveauDossierPage } from './app.po';
 
-describe('springboot-angular2 App', function() {
-  let page: SpringbootAngular2Page;
+describe('nouveau-dossier App', function() {
+  let page: NouveauDossierPage;
 
   beforeEach(() => {
-    page = new SpringbootAngular2Page();
+    page = new NouveauDossierPage();
   });
 
   it('should display message saying app works', () => {

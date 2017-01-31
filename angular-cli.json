@@ -1,12 +1,12 @@
 {
   "project": {
     "version": "1.0.0-beta.26",
-    "name": "springboot-angular2"
+    "name": "Springboot-Angular2"
   },
   "apps": [
     {
-      "root": "src",
-      "outDir": "src/main/resources/static/",
+      "root": "src/webapp",
+      "outDir": "src/main/resources/static",
       "assets": [
         "assets",
         "favicon.ico"
