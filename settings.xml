@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<configuration>
+	<routes>
+	<!-- task routes -->
+		<route>
+			<url>/tasks</url>
+			<method>GET</method>
+			<roles>NONE</roles>
+		</route>
+		<route>
+			<url>/tasks</url>
+			<method>POST</method>
+			<roles>NONE</roles>
+		</route>
+		<route>
+			<url>/tasks/*</url>
+			<method>GET</method>
+			<roles>NONE</roles>
+		</route>
+		<route>
+			<url>/tasks/*</url>
+			<method>DELETE</method>
+			<roles>NONE</roles>
+		</route>
+		<!-- hello routes -->
+		<route>
+			<url>/hello</url>
+			<method>GET</method>
+			<roles>ADMIN</roles>
+		</route>
+		<!-- user routes -->
+		<route>
+			<url>/logout</url>
+			<method>GET</method>
+			<roles>NONE</roles>
+		</route>
+	</routes>
+</configuration>

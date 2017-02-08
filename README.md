@@ -49,3 +49,11 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used [angula
 ### Live Reload
 
 - Run `ng serve --proxy-config proxy.conf.json` in root directory. To change the port (default : 8080), edit the proxy.conf.json file.
+
+## User authentication
+
+- Users can obtain a token by doing a Http GET request on `/token` with BASIC auth
+- The token must then be placed inside a header called X-CSRF-TOKEN
+- As long as it is valid the user is logged in
+- If the user calls a resource that requires authentication and does not possess the X-CSRF-TOKEN header, the user session is destroyed
+- 
