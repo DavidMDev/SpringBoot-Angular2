@@ -57,10 +57,9 @@ The application uses Cross Site Request Forgery protection using csrf tokens.
 - Users can obtain a token by doing a Http GET request on `/api/token` with BASIC auth
 - The token must then be placed inside a header called X-XSRF-TOKEN
 - As long as it is valid the user is logged in
-- If the user calls a resource that requires authentication and does not possess the X-CSRF-TOKEN header, the user session is destroyed
+- If the user calls a resource that requires authentication and does not possess the X-XSRF-TOKEN header, the user session is destroyed
 
 ### TODO
 
 - Add user management on the front-end
 - Add an authentication service which encapsulates http requests to the front-end
-- Add user crud controller on the back-end

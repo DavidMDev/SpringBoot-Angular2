@@ -1,13 +1,14 @@
 package com.web.atrio.users.controllers;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -60,5 +61,16 @@ public class UserController {
 		} else {
 			throw new UnauthorizedException();
 		}
+	}
+	
+	@RequestMapping(value = "/api/users", method = RequestMethod.GET)
+	public ResponseEntity<List> getUsers(){
+		return new ResponseEntity<List>((List) accountRepository.findAll(), HttpStatus.OK);
+	}
+	
+	@RequestMapping(value = "/api/users/{userId}", method = RequestMethod.GET)
+	public ResponseEntity<Account> getUser(@PathVariable(value = "userId") Long userId){
+		Account user = accountRepository.findOne(userId);
+		return new ResponseEntity<Account>(user, HttpStatus.OK);
 	}
 }

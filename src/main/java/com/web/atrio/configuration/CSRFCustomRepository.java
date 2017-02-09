@@ -34,7 +34,18 @@ public class CSRFCustomRepository implements CsrfTokenRepository {
 	@Override
 	public CsrfToken loadToken(HttpServletRequest request) {
 		String sessionId = request.getSession().getId();
-		return tokens.get(sessionId);
+		CsrfToken token = tokens.get(sessionId);
+		String tokenFromRequest = request.getHeader("X-XSRF-TOKEN");
+
+		if(token != null && token.getToken().equals(tokenFromRequest)){
+			System.out.println(tokenFromRequest);
+			System.out.println(token.getToken());
+			return token;
+		} else {
+			tokens.remove(sessionId);
+			request.getSession().invalidate();
+			return null;
+		}
 	}
 	
 	public static void deleteToken(HttpServletRequest request){
