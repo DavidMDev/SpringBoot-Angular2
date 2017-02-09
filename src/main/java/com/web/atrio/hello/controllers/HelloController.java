@@ -1,4 +1,4 @@
-package com.web.atrio.controllers;
+package com.web.atrio.hello.controllers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

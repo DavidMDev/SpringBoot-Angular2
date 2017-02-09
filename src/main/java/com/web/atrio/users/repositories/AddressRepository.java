@@ -1,10 +1,10 @@
-package com.web.atrio.repository;
+package com.web.atrio.users.repositories;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.web.atrio.models.users.Address;
+import com.web.atrio.users.models.Address;
 
 public interface AddressRepository extends CrudRepository<Address, Long> {
 	public List<Address> findByPostCode(int postCode);

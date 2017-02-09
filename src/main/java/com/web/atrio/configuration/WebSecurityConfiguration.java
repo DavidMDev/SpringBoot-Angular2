@@ -14,9 +14,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import com.web.atrio.models.users.Account;
-import com.web.atrio.models.users.utilities.RoleService;
-import com.web.atrio.repository.AccountRepository;
+import com.web.atrio.users.models.Account;
+import com.web.atrio.users.repositories.AccountRepository;
+import com.web.atrio.users.utilities.RoleService;
 
 @Configuration
 public class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdapter {

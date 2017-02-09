@@ -1,4 +1,4 @@
-package com.web.atrio.controllers;
+package com.web.atrio.tasks.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.atrio.models.Task;
+import com.web.atrio.tasks.models.Task;
 
 @RestController
 public class TodoController {

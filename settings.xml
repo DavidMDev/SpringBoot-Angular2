@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
 	<routes>
+	<!-- user routes -->
+		<route>
+			<url>/api/users</url>
+			<method>POST</method>
+			<roles>NONE</roles>
+		</route>
+		<route>
+			<url>/api/users/*</url>
+			<method>DELETE</method>
+			<roles>ADMIN</roles>
+		</route>
+		<route>
+			<url>/api/users</url>
+			<method>PUT</method>
+			<roles>USER</roles>
+		</route>
 	<!-- task routes -->
 		<route>
 			<url>/tasks</url>

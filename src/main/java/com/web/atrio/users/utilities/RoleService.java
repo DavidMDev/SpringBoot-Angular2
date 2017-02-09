@@ -1,9 +1,9 @@
-package com.web.atrio.models.users.utilities;
+package com.web.atrio.users.utilities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.web.atrio.models.users.Account;
+import com.web.atrio.users.models.Account;
 
 public class RoleService {
 

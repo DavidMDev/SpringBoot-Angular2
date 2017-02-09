@@ -1,4 +1,4 @@
-package com.web.atrio.models;
+package com.web.atrio.tasks.models;
 
 public class Task {
 	private int id;

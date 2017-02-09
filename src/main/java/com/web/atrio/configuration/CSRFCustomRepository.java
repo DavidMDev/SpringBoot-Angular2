@@ -4,13 +4,14 @@ import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.security.web.csrf.CsrfTokenRepository;
 
-import com.web.atrio.repository.AccountRepository;
+import com.web.atrio.users.repositories.AccountRepository;
 
 public class CSRFCustomRepository implements CsrfTokenRepository {
 	private static HashMap<String, CsrfToken> tokens = new HashMap<String, CsrfToken>();
@@ -42,4 +43,12 @@ public class CSRFCustomRepository implements CsrfTokenRepository {
 		tokens.remove(sessionId);
 	}
 
+	public static String getTokenFromSessionId(HttpServletRequest request){
+		CsrfToken token = tokens.get(request.getSession().getId());
+		if(token == null){
+			token = CookieCsrfTokenRepository.withHttpOnlyFalse().generateToken(request);
+			tokens.put(request.getSession().getId(), token);
+		}
+		return token.getToken();
+	}
 }

@@ -1,4 +1,4 @@
-package com.web.atrio.models.users;
+package com.web.atrio.users.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

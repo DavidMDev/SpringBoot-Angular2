@@ -1,4 +1,4 @@
-package com.web.atrio.models.users;
+package com.web.atrio.users.models;
 
 import java.util.List;
 import java.util.Set;
@@ -13,8 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-import com.web.atrio.models.users.utilities.PasswordEncrypter;
-import com.web.atrio.models.users.utilities.RoleService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.web.atrio.users.utilities.PasswordEncrypter;
+import com.web.atrio.users.utilities.RoleService;
 
 @Entity
 public class Account {
@@ -30,6 +31,7 @@ public class Account {
 	@Column(unique = true)
 	private String userName;
 
+	@JsonIgnore
 	@NotNull
 	@Convert(converter = PasswordEncrypter.class)
 	private String password;

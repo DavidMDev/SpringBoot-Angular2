@@ -8,7 +8,7 @@ import org.apache.commons.configuration.HierarchicalConfiguration;
 import org.apache.commons.configuration.XMLConfiguration;
 import org.springframework.http.HttpMethod;
 
-import com.web.atrio.models.routes.Route;
+import com.web.atrio.routes.models.Route;
 
 public class ConfigurationAccessor {
 

@@ -54,8 +54,8 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used [angula
 
 The application uses Cross Site Request Forgery protection using csrf tokens.
 
-- Users can obtain a token by doing a Http GET request on `/token` with BASIC auth
-- The token must then be placed inside a header called X-CSRF-TOKEN
+- Users can obtain a token by doing a Http GET request on `/api/token` with BASIC auth
+- The token must then be placed inside a header called X-XSRF-TOKEN
 - As long as it is valid the user is logged in
 - If the user calls a resource that requires authentication and does not possess the X-CSRF-TOKEN header, the user session is destroyed
 

@@ -5,8 +5,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import com.web.atrio.models.users.Account;
-import com.web.atrio.repository.AccountRepository;
+import com.web.atrio.users.models.Account;
+import com.web.atrio.users.repositories.AccountRepository;
 
 @SpringBootApplication
 public class ProjectApplication {

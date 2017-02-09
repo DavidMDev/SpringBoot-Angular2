@@ -14,7 +14,7 @@ import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.web.atrio.models.routes.Route;
+import com.web.atrio.routes.models.Route;
 
 @Component
 @Configuration
@@ -22,7 +22,7 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 	private static final String REQUEST_ATTRIBUTE_NAME = "_csrf";
 	private static final String RESPONSE_HEADER_NAME = "X-CSRF-HEADER";
 	private static final String RESPONSE_PARAM_NAME = "X-CSRF-PARAM";
-	private static final String RESPONSE_TOKEN_NAME = "X-CSRF-TOKEN";
+	private static final String RESPONSE_TOKEN_NAME = "X-XSRF-TOKEN";
 	private static final String BASIC_AUTH_HEADER_NAME = "Authorization";
 
 	@Override
@@ -30,7 +30,6 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		String method = request.getMethod();
 		String url = request.getServletPath();
-
 		try {
 			List<Route> routes = ConfigurationAccessor.getPublicRoutes();
 			for (Route route : routes) {
@@ -47,7 +46,8 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 		String auth = request.getHeader(BASIC_AUTH_HEADER_NAME);
 		if (auth == null) {
 			String tokenString = request.getHeader(RESPONSE_TOKEN_NAME);
-			if (tokenString == null) {
+			String tokenFromMemory = CSRFCustomRepository.getTokenFromSessionId(request);
+			if (!tokenString.equals(tokenFromMemory)) {
 				// Delete any tokens linked to the session - automatic log out
 				CSRFCustomRepository.deleteToken(request);
 				response.sendError(HttpServletResponse.SC_UNAUTHORIZED,

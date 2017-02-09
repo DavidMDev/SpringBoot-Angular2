@@ -1,4 +1,4 @@
-package com.web.atrio.models.routes;
+package com.web.atrio.routes.models;
 
 import org.springframework.http.HttpMethod;
 

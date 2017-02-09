@@ -1,4 +1,4 @@
-package com.web.atrio.models.users;
+package com.web.atrio.users.utilities;
 
 import java.security.Key;
 
@@ -12,13 +12,12 @@ import org.springframework.security.crypto.codec.Base64;
 @Converter
 public class PasswordEncrypter implements AttributeConverter<String, String> {
 
-	private static String SECRETKEY = "HasAnyoneEverBeenSoFarAsToEvenMaybeDoMoreLookLike";
+	private static String SECRETKEY = "1234567890123456";
 	private static final String ALGORITHM = "AES/ECB/PKCS5Padding";
 	private static final byte[] KEY = SECRETKEY.getBytes();
 
 	@Override
 	public String convertToDatabaseColumn(String password) {
-		System.out.println(SECRETKEY);
 		// do some encryption
 		Key key = new SecretKeySpec(KEY, "AES");
 		try {
