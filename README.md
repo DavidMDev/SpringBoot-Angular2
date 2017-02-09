@@ -52,7 +52,7 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used [angula
 
 ## User authentication
 
-The application uses Cross Site Request Forgery protection using csrf tokens.
+The application uses Cross Site Request Forgery protection using csrf tokens for authentication.
 
 - Users can obtain a token by doing a Http GET request on `/api/token` with BASIC auth
 - The token must then be placed inside a header called X-XSRF-TOKEN
