@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -29,7 +30,6 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-
 		String method = request.getMethod();
 		String url = request.getServletPath();
 		if (checkUrl(url, method)) {
@@ -70,33 +70,75 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 	}
 
 	private boolean checkUrl(String url, String method) {
+		List<Route> routes = null;
 		try {
-			List<Route> routes = ConfigurationAccessor.getPublicRoutes();
-			for (Route route : routes) {
-				if (route.getMethod().toString().equals(method)) {
-					if (url.equals(route.getUrl())) {
-						return true;
-					}
-					if (route.getUrl().contains("**")) {
-						String routeUrl = route.getUrl().substring(0, route.getUrl().length() - 2);
-						String[] routeUrls = routeUrl.split("/");
-						String[] ourUrls = url.split("/");
-
-						if (ourUrls.length >= routeUrls.length) {
-							boolean check = true;
-							for (int i = 0; i < routeUrls.length; i++) {
-								if (check) {
-									check = routeUrls[i].equals(ourUrls[i]);
-								}
-							}
-							return check;
-						}
-					}
-				}
-			}
+			routes = ConfigurationAccessor.getPublicRoutes();
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
 		}
+
+		for (Route route : routes) {
+			HttpMethod httpMethod = ConfigurationAccessor.getHttpMethodFromString(method);
+			boolean check = false;
+			String routeUrl = "";
+			if (httpMethod.equals(route.getMethod())) {
+				routeUrl = route.getUrl();
+
+				if (hasOneAsterisk(routeUrl)) {
+					check = compareWithOneAsterisk(routeUrl, url);
+				}
+				if (hasTwoAsterisks(routeUrl) && !check) {
+					check = compareWithTwoAsterisks(routeUrl, url);
+				}
+				if(!check){
+					check = routeUrl.equals(url);
+				}
+			}
+			if (check) {
+				return true;
+			}
+		}
 		return false;
 	}
+
+	private boolean compareWithOneAsterisk(String routeUrl, String url) {
+		routeUrl = routeUrl.substring(0, routeUrl.length() - 1);
+		String[] routeUrls = routeUrl.split("/");
+		String[] ourUrls = url.split("/");
+		if (ourUrls.length >= routeUrls.length) {
+			boolean check = true;
+			for (int i = 0; i < routeUrls.length; i++) {
+				if (check) {
+					check = routeUrls[i].equals(ourUrls[i]);
+				}
+			}
+			return check;
+		}
+		return false;
+	}
+
+	private boolean compareWithTwoAsterisks(String routeUrl, String url) {
+		routeUrl = routeUrl.substring(0, routeUrl.length() - 2);
+		String[] routeUrls = routeUrl.split("/");
+		String[] ourUrls = url.split("/");
+		if (ourUrls.length >= routeUrls.length) {
+			boolean check = true;
+			for (int i = 0; i < routeUrls.length; i++) {
+				if (check) {
+					check = routeUrls[i].equals(ourUrls[i]);
+				}
+			}
+			return check;
+		}
+		return false;
+	}
+
+	private boolean hasTwoAsterisks(String str) {
+		return str.matches("^[^*]*(?:\\*[^*]*){2}$");
+	}
+
+	private boolean hasOneAsterisk(String str) {
+		return str.matches("^[^*]*(?:\\*[^*]*){1}$");
+	}
+
 }

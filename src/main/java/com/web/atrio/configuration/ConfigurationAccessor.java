@@ -35,7 +35,6 @@ public class ConfigurationAccessor {
 
 			if (route.getPermissions()[0].equals("NONE")) {
 				route.setUrl(routeXML.getString("url"));
-
 				route.setMethod(getHttpMethodFromString(routeXML.getString("method")));
 				routesList.add(route);
 			}
@@ -49,7 +48,7 @@ public class ConfigurationAccessor {
 		return routesXML;
 	}
 
-	private static HttpMethod getHttpMethodFromString(String methodString) {
+	public static HttpMethod getHttpMethodFromString(String methodString) {
 		switch (methodString) {
 		case "GET":
 			return HttpMethod.GET;

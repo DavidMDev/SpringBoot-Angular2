@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
+<!-- Routes -->
+<!-- * : any variable, ** : any sub directory or variables -->
+<!-- Routes must end with variables (No routes like "/people/*/groups/*") -->
 	<routes>
-<!-- api routes -->
-    <!-- user routes -->
+		<!-- api routes -->
+    	<!-- user routes -->
 		<route>
 			<url>/api/users</url>
 			<method>POST</method>
@@ -28,19 +31,7 @@
 			<method>GET</method>
 			<roles>USER</roles>
 		</route>
-<!-- public routes -->
-    <!-- Homepage -->
-        <route>
-            <url>/</url>
-            <method>GET</method>
-            <roles>NONE</roles>
-        </route>
-        <route>
-            <url>/public/**</url>
-            <method>GET</method>
-            <roles>NONE</roles>
-        </route>
-    <!-- task routes -->
+    	<!-- task routes -->
 		<route>
 			<url>/tasks</url>
 			<method>GET</method>
@@ -72,5 +63,17 @@
 			<method>GET</method>
 			<roles>NONE</roles>
 		</route>
+		<!-- public routes -->
+    	<!-- Do not touch these -->
+        <route>
+            <url>/</url>
+            <method>GET</method>
+            <roles>NONE</roles>
+        </route>
+        <route>
+            <url>/public/**</url>
+            <method>GET</method>
+            <roles>NONE</roles>
+        </route>
 	</routes>
 </configuration>
