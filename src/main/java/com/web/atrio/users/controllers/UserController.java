@@ -1,6 +1,5 @@
 package com.web.atrio.users.controllers;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.atrio.configuration.CSRFCustomRepository;
+import com.web.atrio.exceptions.NotFoundException;
 import com.web.atrio.exceptions.UnauthorizedException;
 import com.web.atrio.users.models.Account;
 import com.web.atrio.users.repositories.AccountRepository;
@@ -69,8 +69,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/api/users/{userId}", method = RequestMethod.GET)
-	public ResponseEntity<Account> getUser(@PathVariable(value = "userId") Long userId){
+	public ResponseEntity<Account> getUser(@PathVariable(value = "userId") Long userId) throws NotFoundException{
 		Account user = accountRepository.findOne(userId);
+		if(user == null){
+			throw new NotFoundException();
+		}
 		return new ResponseEntity<Account>(user, HttpStatus.OK);
 	}
 }

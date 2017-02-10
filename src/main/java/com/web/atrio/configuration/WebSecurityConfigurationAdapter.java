@@ -34,6 +34,7 @@ public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapte
 		// Require csrf token authentication for anything else
 		http.csrf().csrfTokenRepository(csrfRepository);
 		http.authorizeRequests().anyRequest().authenticated();
+		http.authorizeRequests().antMatchers("/public/**").permitAll();
 	}
 
 	@Override
@@ -47,5 +48,8 @@ public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapte
 				}
 			}
 		}
+		 web
+         .ignoring()
+            .antMatchers("/public/**");
 	}
 }

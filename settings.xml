@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
 	<routes>
-	<!-- user routes -->
+<!-- api routes -->
+    <!-- user routes -->
 		<route>
 			<url>/api/users</url>
 			<method>POST</method>
@@ -27,7 +28,19 @@
 			<method>GET</method>
 			<roles>USER</roles>
 		</route>
-	<!-- task routes -->
+<!-- public routes -->
+    <!-- Homepage -->
+        <route>
+            <url>/</url>
+            <method>GET</method>
+            <roles>NONE</roles>
+        </route>
+        <route>
+            <url>/public/**</url>
+            <method>GET</method>
+            <roles>NONE</roles>
+        </route>
+    <!-- task routes -->
 		<route>
 			<url>/tasks</url>
 			<method>GET</method>
@@ -48,11 +61,16 @@
 			<method>DELETE</method>
 			<roles>NONE</roles>
 		</route>
+		<route>
+			<url>/tasks</url>
+			<method>PUT</method>
+			<roles>NONE</roles>
+		</route>
 		<!-- hello routes -->
 		<route>
 			<url>/hello</url>
 			<method>GET</method>
-			<roles>ADMIN</roles>
+			<roles>NONE</roles>
 		</route>
 	</routes>
 </configuration>

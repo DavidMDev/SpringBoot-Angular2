@@ -29,26 +29,18 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-		
+
 		String method = request.getMethod();
 		String url = request.getServletPath();
-		try {
-			List<Route> routes = ConfigurationAccessor.getPublicRoutes();
-			for (Route route : routes) {
-				if (route.getMethod().toString().equals(method) && url.equals(route.getUrl())) {
-					filterChain.doFilter(request, response);
-					return;
-				}
-			}
-
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
+		if (checkUrl(url, method)) {
+			filterChain.doFilter(request, response);
+			return;
 		}
 
 		String auth = request.getHeader(BASIC_AUTH_HEADER_NAME);
 		if (auth == null) {
 			HttpSession session = request.getSession(false);
-			if(session == null){
+			if (session == null) {
 				response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
 						"Full authentication is required to access this resource");
 				return;
@@ -75,5 +67,36 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 			filterChain.doFilter(request, response);
 			return;
 		}
+	}
+
+	private boolean checkUrl(String url, String method) {
+		try {
+			List<Route> routes = ConfigurationAccessor.getPublicRoutes();
+			for (Route route : routes) {
+				if (route.getMethod().toString().equals(method)) {
+					if (url.equals(route.getUrl())) {
+						return true;
+					}
+					if (route.getUrl().contains("**")) {
+						String routeUrl = route.getUrl().substring(0, route.getUrl().length() - 2);
+						String[] routeUrls = routeUrl.split("/");
+						String[] ourUrls = url.split("/");
+
+						if (ourUrls.length >= routeUrls.length) {
+							boolean check = true;
+							for (int i = 0; i < routeUrls.length; i++) {
+								if (check) {
+									check = routeUrls[i].equals(ourUrls[i]);
+								}
+							}
+							return check;
+						}
+					}
+				}
+			}
+		} catch (ConfigurationException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
