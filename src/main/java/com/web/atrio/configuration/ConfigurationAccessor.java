@@ -48,6 +48,11 @@ public class ConfigurationAccessor {
 		return routesXML;
 	}
 
+	public static int getCacheTime() throws ConfigurationException{
+		XMLConfiguration configXML = new XMLConfiguration("settings.xml");
+		return configXML.getInt("cachetime");
+	}
+	
 	public static HttpMethod getHttpMethodFromString(String methodString) {
 		switch (methodString) {
 		case "GET":

@@ -1,4 +1,4 @@
-<div *ngIf="task">
+<div  class="container" *ngIf="task">
   <h2>{{task.name}} details!</h2>
   <div>
     <label>id: </label>{{task.id}}</div>
@@ -10,6 +10,6 @@
   <label>description: </label>
   <input [(ngModel)]="task.description" placeholder="description" />
 </div>
-  <button (click)="goBack()">Back</button>
-  <button (click)="save()">Save</button>
+  <button class="btn btn-default" (click)="goBack()">Back</button>
+  <button class="btn btn-default" (click)="save()">Save</button>
 </div>

@@ -1,20 +1,46 @@
-<h2>My todo list</h2>
-  <ul>
-    <li *ngFor="let task of tasks">
-      <span>{{task.name}}</span>
-      <span>{{task.description}}</span>
-      <button class="details"
-              (click)="goto(task)">Details</button>
-      <button class="delete"
-              (click)="delete(task);">x</button>
-    </li>
-  </ul>
+<div class="container">
+  <h2>Todo List</h2>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let task of tasks">
+            <button class="btn btn-default" (click)="delete(task);"><span class="glyphicon glyphicon-remove" ></span></button>
+            <button class="btn btn-default" (click)="goto(task)"><span class="glyphicon glyphicon-info-sign" ></span></button>
+            <span class="pull-right">{{task.name}}</span>
+            <span class="pull-right">{{task.description}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-  <label>Task name:</label> <input #task_name />
-<br>
-  <label>Task description:</label> <input #task_description />
-<br>
-  <button (click)="add(task_name.value, task_description.value); task_name.value=''; task_description.value='';">
+
+  <form class="form-horizontal">
+    <fieldset>
+      <!-- Form Name -->
+      <legend>Add task</legend>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label pull-left" for="name">Name</label>
+        <div class="col-md-4 pull-left">
+          <input id="name" name="name" type="text" placeholder="Name" class="form-control input-md" #task_name/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label pull-left" for="description">Description</label>
+        <div class="col-md-4 pull-left">
+          <input id="description" name="description" type="text" placeholder="Description" class="form-control input-md"
+                 #task_description/>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+  <button class="btn btn-primary"
+          (click)="add(task_name.value, task_description.value); task_name.value=''; task_description.value='';">
     Add
   </button>
+
+</div>
 

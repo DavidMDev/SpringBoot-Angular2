@@ -20,6 +20,9 @@ public class StaticResourceConfiguration extends WebMvcConfigurerAdapter {
 	
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
+		
+	    registry.addRedirectViewController("/public/", "/public/index.html");
 	    registry.addRedirectViewController("/", "/public/index.html");
+	    
 	}
 }

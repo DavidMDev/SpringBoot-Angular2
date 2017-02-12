@@ -76,4 +76,6 @@
             <roles>NONE</roles>
         </route>
 	</routes>
+	<!-- Cache duration in seconds -->
+	<cachetime>0</cachetime>
 </configuration>
