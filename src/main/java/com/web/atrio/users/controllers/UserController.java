@@ -1,6 +1,5 @@
 package com.web.atrio.users.controllers;
 
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;

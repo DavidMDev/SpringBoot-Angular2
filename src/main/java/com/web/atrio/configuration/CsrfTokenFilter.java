@@ -21,6 +21,7 @@ import com.web.atrio.routes.models.Route;
 @Component
 @Configuration
 public class CsrfTokenFilter extends OncePerRequestFilter {
+	private static final String FULL_AUTHENTICATION_REQUIRED = "Full authentication is required to access this resource";
 	private static final String REQUEST_ATTRIBUTE_NAME = "_csrf";
 	private static final String RESPONSE_HEADER_NAME = "X-CSRF-HEADER";
 	private static final String RESPONSE_PARAM_NAME = "X-CSRF-PARAM";
@@ -32,28 +33,32 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 		String method = request.getMethod();
 		String url = request.getServletPath();
+		String auth = request.getHeader(BASIC_AUTH_HEADER_NAME);
+
 		if (checkUrl(url, method)) {
 			filterChain.doFilter(request, response);
 			return;
 		}
 
-		String auth = request.getHeader(BASIC_AUTH_HEADER_NAME);
 		if (auth == null) {
 			HttpSession session = request.getSession(false);
+
 			if (session == null) {
 				response.sendError(HttpServletResponse.SC_FORBIDDEN,
-						"Full authentication is required to access this resource");
+						FULL_AUTHENTICATION_REQUIRED);
 				return;
 			}
+
 			String tokenString = request.getHeader(RESPONSE_TOKEN_NAME);
+
 			if (tokenString == null) {
 				// Delete any tokens linked to the session - automatic log out
 				CSRFCustomRepository.deleteToken(request);
 				response.sendError(HttpServletResponse.SC_FORBIDDEN,
-						"Full authentication is required to access this resource");
+						FULL_AUTHENTICATION_REQUIRED);
 				return;
 			} else {
-				// Continue with application as normal
+
 				CsrfToken token = (CsrfToken) request.getAttribute(REQUEST_ATTRIBUTE_NAME);
 				if (token != null) {
 					response.setHeader(RESPONSE_HEADER_NAME, token.getHeaderName());
@@ -61,13 +66,14 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 					response.setHeader(RESPONSE_TOKEN_NAME, token.getToken());
 				}
 				CsrfToken storedToken = CSRFCustomRepository.obtainToken(request);
+
 				if (storedToken != null && storedToken.getToken().equals(tokenString)) {
 					filterChain.doFilter(request, response);
 					return;
 				} else {
 					CSRFCustomRepository.deleteToken(request);
 					response.sendError(HttpServletResponse.SC_FORBIDDEN,
-							"Full authentication is required to access this resource");
+							FULL_AUTHENTICATION_REQUIRED);
 					return;
 				}
 			}
