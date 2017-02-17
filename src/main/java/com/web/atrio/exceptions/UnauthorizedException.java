@@ -7,6 +7,6 @@ public class UnauthorizedException extends HttpException{
 	public UnauthorizedException() {
 		super();
 		this.setMessage("Full authentication is required to access this resource");
-		this.setStatus(HttpStatus.UNAUTHORIZED);
+		this.setStatus(HttpStatus.FORBIDDEN);
 	}
 }

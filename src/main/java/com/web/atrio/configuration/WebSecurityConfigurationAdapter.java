@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.web.atrio.routes.models.Route;
 
@@ -29,8 +30,7 @@ public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapte
 			}
 		}
 		// Set up basic auth to obtain token
-		http.httpBasic().and().authorizeRequests().antMatchers(HttpMethod.GET, "/api/token").authenticated();
-
+		http.antMatcher("/api/token").httpBasic().and().authorizeRequests().anyRequest();
 		// Require csrf token authentication for anything else
 		http.csrf().csrfTokenRepository(csrfRepository);
 		http.authorizeRequests().anyRequest().authenticated();

@@ -31,6 +31,11 @@
 			<method>GET</method>
 			<roles>USER</roles>
 		</route>
+		<route>
+			<url>/api/me</url>
+			<method>GET</method>
+			<roles>USER</roles>
+		</route>
     	<!-- task routes -->
 		<route>
 			<url>/tasks</url>

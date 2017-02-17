@@ -2,7 +2,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 import {TodoService} from "./todo.service";
-import { Task } from "./Task";
+import { Task } from "./task";
 @Component({
   moduleId: module.id,
   selector: 'todo-list',

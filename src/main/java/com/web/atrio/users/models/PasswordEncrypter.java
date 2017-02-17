@@ -18,7 +18,6 @@ public class PasswordEncrypter implements AttributeConverter<String, String> {
 
 	@Override
 	public String convertToDatabaseColumn(String password) {
-		System.out.println(SECRETKEY);
 		// do some encryption
 		Key key = new SecretKeySpec(KEY, "AES");
 		try {

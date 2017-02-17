@@ -1,4 +1,4 @@
-import { Task } from './Task';
+import { Task } from './task';
 import {OnInit, Component, OnDestroy} from "@angular/core";
 import {TodoService} from "./todo.service";
 import {ActivatedRoute} from "@angular/router";

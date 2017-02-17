@@ -41,7 +41,7 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 		if (auth == null) {
 			HttpSession session = request.getSession(false);
 			if (session == null) {
-				response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
+				response.sendError(HttpServletResponse.SC_FORBIDDEN,
 						"Full authentication is required to access this resource");
 				return;
 			}
@@ -49,7 +49,7 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 			if (tokenString == null) {
 				// Delete any tokens linked to the session - automatic log out
 				CSRFCustomRepository.deleteToken(request);
-				response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
+				response.sendError(HttpServletResponse.SC_FORBIDDEN,
 						"Full authentication is required to access this resource");
 				return;
 			} else {
@@ -60,8 +60,16 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 					response.setHeader(RESPONSE_PARAM_NAME, token.getParameterName());
 					response.setHeader(RESPONSE_TOKEN_NAME, token.getToken());
 				}
-				filterChain.doFilter(request, response);
-				return;
+				CsrfToken storedToken = CSRFCustomRepository.obtainToken(request);
+				if (storedToken != null && storedToken.getToken().equals(tokenString)) {
+					filterChain.doFilter(request, response);
+					return;
+				} else {
+					CSRFCustomRepository.deleteToken(request);
+					response.sendError(HttpServletResponse.SC_FORBIDDEN,
+							"Full authentication is required to access this resource");
+					return;
+				}
 			}
 		} else {
 			filterChain.doFilter(request, response);
@@ -90,7 +98,7 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 				if (hasTwoAsterisks(routeUrl) && !check) {
 					check = compareWithTwoAsterisks(routeUrl, url);
 				}
-				if(!check){
+				if (!check) {
 					check = routeUrl.equals(url);
 				}
 			}
