@@ -1,1 +1,28 @@
-hfsdhsdfbsjkdhfn
+<div class="container">
+  <h2>Login</h2>
+  <form class="form-horizontal">
+    <fieldset>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label pull-left" for="username">Username</label>
+        <div class="col-md-4 pull-left">
+          <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md" #username/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4 control-label pull-left" for="password">password</label>
+        <div class="col-md-4 pull-left">
+          <input id="password" name="password" type="password" placeholder="password" class="form-control input-md"
+                 #password/>
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+  <button class="btn btn-primary"
+          (click)="login(username.value, password.value); username.value=''; password.value='';">
+    Submit
+  </button>
+
+</div>

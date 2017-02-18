@@ -48,7 +48,9 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used [angula
 
 ### Live Reload
 
+- To use the app with live reload you need to run it using the CORS shortcut described above for chrome and change `<base href="/public/">` to `<base href="/">` in order for the app to work.
 - Run `ng serve --proxy-config proxy.conf.json` in root directory. To change the port (default : 8080), edit the proxy.conf.json file.
+
 
 ## User authentication
 

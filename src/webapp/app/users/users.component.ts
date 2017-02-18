@@ -15,7 +15,7 @@ export class UsersComponent implements OnInit{
 
   constructor(private router: Router, private httpService: HttpService) { }
   getTest(){
-    let url = 'http://localhost:8080/api/users/';
+    let url = 'users/';
     this.httpService.get(url).then(result => {
       console.log(result);
     }).catch(result => {

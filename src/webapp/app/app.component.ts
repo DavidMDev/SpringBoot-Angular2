@@ -1,6 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewContainerRef} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {RouterOutlet} from "@angular/router";
+import {HttpService} from "./http/http.service";
+import {ToastsManager} from "ng2-toastr";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,7 +12,8 @@ export class AppComponent {
   private messageUrl: string;
   message: string;
 
-  constructor(private http: Http) {
+  constructor(private toastr: ToastsManager, private vcr: ViewContainerRef, private http: Http, private httpService: HttpService) {
+    this.toastr.setRootViewContainerRef(vcr);
   }
 
 

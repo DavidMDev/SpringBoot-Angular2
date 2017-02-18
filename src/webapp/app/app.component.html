@@ -17,6 +17,8 @@
           <li><a routerLink="/users" routerLinkActive="active">Login</a></li>
           <li><a routerLink="/list" routerLinkActive="active">Todo list</a></li>
           <li><a routerLink="/helloworld" routerLinkActive="active">Hello world</a></li>
+          <li *ngIf="!httpService.userLogged"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+          <li *ngIf="httpService.userLogged"><a (click)="logOut()" routerLinkActive="active">Log out</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
