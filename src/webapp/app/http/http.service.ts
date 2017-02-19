@@ -9,7 +9,7 @@ import {ToastsManager} from "ng2-toastr";
 export class HttpService {
   private contentTypeHeader = 'Content-Type';
   private contentTypeValue = 'application/json';
-  private csrfHeader = 'X-CSRF-TOKEN';
+  private csrfHeader = 'X-XSRF-TOKEN';
   private serverURL = 'http://localhost:8080/api/';
   public userLogged = false;
 

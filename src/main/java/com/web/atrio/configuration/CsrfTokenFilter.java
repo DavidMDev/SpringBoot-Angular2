@@ -58,13 +58,6 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 						FULL_AUTHENTICATION_REQUIRED);
 				return;
 			} else {
-
-				CsrfToken token = (CsrfToken) request.getAttribute(REQUEST_ATTRIBUTE_NAME);
-				if (token != null) {
-					response.setHeader(RESPONSE_HEADER_NAME, token.getHeaderName());
-					response.setHeader(RESPONSE_PARAM_NAME, token.getParameterName());
-					response.setHeader(RESPONSE_TOKEN_NAME, token.getToken());
-				}
 				CsrfToken storedToken = CSRFCustomRepository.obtainToken(request);
 
 				if (storedToken != null && storedToken.getToken().equals(tokenString)) {
