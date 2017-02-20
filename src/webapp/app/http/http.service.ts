@@ -22,9 +22,7 @@ export class HttpService {
     let headers = new Headers();
     headers.set(this.contentTypeHeader, this.contentTypeValue);
     let token = '' + this.localStorageService.get('csrf_token');
-    console.log('token : ' + token);
     headers.set(this.csrfHeader, token);
-    console.log(headers);
     return new Promise((resolve, reject) => {
       this.http.get(this.serverURL + url, {headers: headers}).toPromise().then(result => {
         resolve(result);
@@ -106,7 +104,6 @@ export class HttpService {
   logOut() {
     this.userLogged = false;
     this.localStorageService.set('csrf_token', '');
-    this.toastr.info('You have been logged out.');
   }
 
   private handleError(reject, error) {

@@ -63,5 +63,5 @@ The application uses Cross Site Request Forgery protection using csrf tokens for
 
 ### TODO
 
-- Add user management on the front-end
-- Add an authentication service which encapsulates http requests to the front-end
+- Finish user management on the front-end
+- Implement dynamic roles in the database (loaded from settings.xml at startup)

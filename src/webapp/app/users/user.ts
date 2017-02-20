@@ -8,4 +8,5 @@ export class User{
   email: string;
   telephones: Array<Telephone>;
   addresses: Array<Address>;
+  roles: Array<string>;
 }

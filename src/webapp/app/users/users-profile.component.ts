@@ -12,20 +12,22 @@ import {Location}               from '@angular/common';
 })
 
 export class UsersComponent implements OnInit {
-  private sub: any;
   private user: User;
+  private sub: any;
+
 
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      if (this.location.path() === 'profile/me') {
+    this.sub = this.route.params.subscribe(params => {
+      let id = +params['id'];
+      if (id === 0) {
         this.usersService.getMyProfile().then(user => {
           this.user = user;
         }).catch(result => {
           console.log(result);
         });
       } else {
-        this.usersService.getUser(+params['id']).then(user => {
+        this.usersService.getUser(id).then(user => {
           this.user = user;
         }).catch(result => {
           console.log(result);

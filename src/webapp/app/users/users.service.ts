@@ -3,6 +3,8 @@ import {User} from "./User";
 
 import 'rxjs/add/operator/toPromise';
 import {HttpService} from "../http/http.service";
+import {Telephone} from "./telephone";
+import {Address} from "./address";
 
 @Injectable()
 export class UserService {
@@ -13,11 +15,13 @@ export class UserService {
 
   getUsers(): Promise<User[]> {
     return this.httpService.get(this.usersUrl)
-      .then(res => <User[]>(res.json())
+      .then(res => {
+          <User[]>(res.json());
+        }
       ).catch(this.handleError);
   }
 
-  deleteUser(id: number){
+  deleteUser(id: number) {
     const url = `${this.usersUrl}/${id}`;
     return this.httpService.delete(url)
       .then(res => <User[]>(res.json()))
@@ -36,24 +40,41 @@ export class UserService {
     return Promise.reject(error.message || error);
   }
 
-  public getUser(id: number){
+  public getUser(id: number) {
     const url = `${this.usersUrl}/${id}`;
     return this.httpService.get(url)
       .then(res => <User>(res.json()))
       .catch(this.handleError);
   }
 
-  public modifyUser(user: User){
+  public modifyUser(user: User) {
     const url = `${this.usersUrl}`;
     return this.httpService.put(url, JSON.stringify(user))
       .then(res => <User>(res.json()))
       .catch(this.handleError);
   }
 
-  public getMyProfile(){
+  public getMyProfile() {
     const url = `me`;
-    return this.httpService.get(url)
-      .then(res => <User>(res.json()))
+    return new Promise((resolve, reject) => {
+      this.httpService.get(url)
+        .then(res => {
+          console.log('user : ', res.json());
+          let obj = res.json();
+          let user = new User();
+          user.username = obj.userName;
+          user.firstName = obj.firstName;
+          user.lastName = obj.lastName;
+          user.email = obj.email;
+          user.id = obj.id;
+          user.roles = obj.roles;
+          let telephones = Array<Telephone>();
+          let addresses = Array<Address>();
+          user.telephones = telephones;
+          user.addresses = addresses;
+          resolve(user);
+        }).catch(reject);
+    })
       .catch(this.handleError);
   }
 }
