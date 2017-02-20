@@ -3,7 +3,9 @@
     <div class="row">
       <div class="col-md-6">
         <div class="panel panel-default">
-          <h3>{{user.username}}</h3>
+          <div class="panel-heading">
+            <h3>{{user.username}}</h3>
+          </div>
           <ul class="list-group">
             <li class="list-group-item">Email : {{user.email}}</li>
             <li class="list-group-item">First name : {{user.firstName}}</li>
@@ -16,7 +18,9 @@
     <div class="row">
       <div class="col-md-6">
         <div class="panel panel-default">
-          <h4>Phone numbers</h4>
+          <div class="panel-heading">
+            <h4>Phone numbers</h4>
+          </div>
           <ul class="list-group" *ngFor="let phone of user.telephones">
             <li class="list-group-item">{{phone.number}}, {{phone.type}}</li>
           </ul>
@@ -25,7 +29,9 @@
     </div>
     <div class="row">
       <div class="col-md-6">
-        <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel panel-default">
+          </div>
           <h4>Addresses</h4>
           <ul class="list-group" *ngFor="let address of user.addresses">
             <li class="list-group-item">{{address.houseNumber}}, {{address.streetName}}</li>

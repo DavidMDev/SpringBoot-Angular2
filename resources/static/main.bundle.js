@@ -273,8 +273,8 @@ var HelloworldComponent = (function () {
     HelloworldComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'helloworld',
-            template: __webpack_require__(691),
-            styles: [__webpack_require__(686)],
+            template: __webpack_require__(693),
+            styles: [__webpack_require__(688)],
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === 'function' && _a) || Object])
     ], HelloworldComponent);
@@ -307,7 +307,7 @@ var HomeComponent = (function () {
     HomeComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'home',
-            template: __webpack_require__(692)
+            template: __webpack_require__(694)
         }), 
         __metadata('design:paramtypes', [])
     ], HomeComponent);
@@ -369,7 +369,7 @@ var TodoDetailComponent = (function () {
     TodoDetailComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'todo-detail',
-            template: __webpack_require__(693),
+            template: __webpack_require__(695),
             styles: [__webpack_require__(384)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__todo_service__["a" /* TodoService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__todo_service__["a" /* TodoService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* ActivatedRoute */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common__["Location"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__angular_common__["Location"]) === 'function' && _c) || Object])
@@ -441,7 +441,7 @@ var TodoComponent = (function () {
     TodoComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'todo-list',
-            template: __webpack_require__(694),
+            template: __webpack_require__(696),
             styles: [__webpack_require__(384)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__todo_service__["a" /* TodoService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__todo_service__["a" /* TodoService */]) === 'function' && _b) || Object])
@@ -497,7 +497,7 @@ var LoginComponent = (function () {
     LoginComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'login',
-            template: __webpack_require__(695),
+            template: __webpack_require__(697),
             styles: [__webpack_require__(385)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_toastr__["ToastsManager"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3_ng2_toastr__["ToastsManager"]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__http_http_service__["a" /* HttpService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__http_http_service__["a" /* HttpService */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]) === 'function' && _c) || Object])
@@ -564,7 +564,7 @@ var UsersComponent = (function () {
     UsersComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'users',
-            template: __webpack_require__(696),
+            template: __webpack_require__(698),
             styles: [__webpack_require__(385)]
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__users_service__["a" /* UserService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__users_service__["a" /* UserService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* ActivatedRoute */]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__angular_common__["Location"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__angular_common__["Location"]) === 'function' && _c) || Object])
@@ -585,6 +585,8 @@ var UsersComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__ = __webpack_require__(390);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_toPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__http_http_service__ = __webpack_require__(153);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__telephone__ = __webpack_require__(530);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__address__ = __webpack_require__(529);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -595,6 +597,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -645,21 +649,42 @@ var UserService = (function () {
             _this.httpService.get(url)
                 .then(function (res) {
                 console.log('user : ', res.json());
-                var obj = res.json();
-                var user = new __WEBPACK_IMPORTED_MODULE_1__User__["a" /* User */]();
-                user.username = obj.userName;
-                user.firstName = obj.firstName;
-                user.lastName = obj.lastName;
-                user.email = obj.email;
-                user.id = obj.id;
-                var telephones = Array();
-                var addresses = Array();
-                user.telephones = telephones;
-                user.addresses = addresses;
+                var user = _this.mapUser(res);
                 resolve(user);
             }).catch(reject);
         })
             .catch(this.handleError);
+    };
+    UserService.prototype.mapUser = function (res) {
+        var obj = res.json();
+        var user = new __WEBPACK_IMPORTED_MODULE_1__User__["a" /* User */]();
+        user.username = obj.userName;
+        user.firstName = obj.firstName;
+        user.lastName = obj.lastName;
+        user.email = obj.email;
+        user.id = obj.id;
+        user.roles = obj.roles;
+        var telephones = Array();
+        var addresses = Array();
+        obj.telephones.forEach(function (telephoneJSON) {
+            var telephone = new __WEBPACK_IMPORTED_MODULE_4__telephone__["a" /* Telephone */]();
+            telephone.id = telephoneJSON.id;
+            telephone.number = telephoneJSON.number;
+            telephone.type = telephoneJSON.type;
+            telephones.push(telephone);
+        });
+        obj.addresses.forEach(function (addressJSON) {
+            var address = new __WEBPACK_IMPORTED_MODULE_5__address__["a" /* Address */]();
+            address.id = addressJSON.id;
+            address.addressDetails = addressJSON.addressDetails;
+            address.streetName = addressJSON.streetName;
+            address.houseNumber = addressJSON.houseNumber;
+            address.postcode = addressJSON.postcode;
+            address.city = addressJSON.city;
+        });
+        user.telephones = telephones;
+        user.addresses = addresses;
+        return user;
     };
     UserService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
@@ -727,10 +752,10 @@ webpackEmptyContext.id = 406;
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts__ = __webpack_require__(530);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts__ = __webpack_require__(532);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(495);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(529);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__environments_environment__ = __webpack_require__(531);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_app_module__ = __webpack_require__(527);
 
 
@@ -858,8 +883,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
-            template: __webpack_require__(690),
-            styles: [__webpack_require__(685)],
+            template: __webpack_require__(692),
+            styles: [__webpack_require__(687)],
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_toastr__["ToastsManager"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3_ng2_toastr__["ToastsManager"]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"]) === 'function' && _b) || Object, (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* Http */]) === 'function' && _c) || Object, (typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__http_http_service__["a" /* HttpService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__http_http_service__["a" /* HttpService */]) === 'function' && _d) || Object])
     ], AppComponent);
@@ -975,6 +1000,34 @@ var User = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Address; });
+var Address = (function () {
+    function Address() {
+    }
+    return Address;
+}());
+//# sourceMappingURL=C:/development/SpringBoot-Angular2/src/webapp/address.js.map
+
+/***/ }),
+
+/***/ 530:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Telephone; });
+var Telephone = (function () {
+    function Telephone() {
+    }
+    return Telephone;
+}());
+//# sourceMappingURL=C:/development/SpringBoot-Angular2/src/webapp/telephone.js.map
+
+/***/ }),
+
+/***/ 531:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return environment; });
 // The file contents for the current environment will overwrite these during build.
 // The build system defaults to the dev environment which uses `environment.ts`, but if you do
@@ -987,41 +1040,41 @@ var environment = {
 
 /***/ }),
 
-/***/ 530:
+/***/ 532:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_es6_symbol__ = __webpack_require__(545);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_es6_symbol__ = __webpack_require__(547);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_core_js_es6_symbol___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_core_js_es6_symbol__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_es6_object__ = __webpack_require__(538);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_es6_object__ = __webpack_require__(540);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_core_js_es6_object___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_core_js_es6_object__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_core_js_es6_function__ = __webpack_require__(534);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_core_js_es6_function__ = __webpack_require__(536);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_core_js_es6_function___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_core_js_es6_function__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_core_js_es6_parse_int__ = __webpack_require__(540);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_core_js_es6_parse_int__ = __webpack_require__(542);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_core_js_es6_parse_int___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_core_js_es6_parse_int__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_core_js_es6_parse_float__ = __webpack_require__(539);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_core_js_es6_parse_float__ = __webpack_require__(541);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_core_js_es6_parse_float___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_core_js_es6_parse_float__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_core_js_es6_number__ = __webpack_require__(537);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_core_js_es6_number__ = __webpack_require__(539);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_core_js_es6_number___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_core_js_es6_number__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_core_js_es6_math__ = __webpack_require__(536);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_core_js_es6_math__ = __webpack_require__(538);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_core_js_es6_math___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_core_js_es6_math__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_core_js_es6_string__ = __webpack_require__(544);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_core_js_es6_string__ = __webpack_require__(546);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_core_js_es6_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_core_js_es6_string__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_core_js_es6_date__ = __webpack_require__(533);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_core_js_es6_date__ = __webpack_require__(535);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_core_js_es6_date___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_core_js_es6_date__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_core_js_es6_array__ = __webpack_require__(532);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_core_js_es6_array__ = __webpack_require__(534);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_core_js_es6_array___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_core_js_es6_array__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_core_js_es6_regexp__ = __webpack_require__(542);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_core_js_es6_regexp__ = __webpack_require__(544);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_core_js_es6_regexp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_core_js_es6_regexp__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_core_js_es6_map__ = __webpack_require__(535);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_core_js_es6_map__ = __webpack_require__(537);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_core_js_es6_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_core_js_es6_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_core_js_es6_set__ = __webpack_require__(543);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_core_js_es6_set__ = __webpack_require__(545);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_core_js_es6_set___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_core_js_es6_set__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect__ = __webpack_require__(541);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect__ = __webpack_require__(543);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect__ = __webpack_require__(546);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect__ = __webpack_require__(548);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__ = __webpack_require__(718);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__ = __webpack_require__(720);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__);
 
 
@@ -1043,7 +1096,7 @@ var environment = {
 
 /***/ }),
 
-/***/ 685:
+/***/ 687:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(57)();
@@ -1061,7 +1114,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 686:
+/***/ 688:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(57)();
@@ -1079,56 +1132,56 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ 690:
+/***/ 692:
 /***/ (function(module, exports) {
 
 module.exports = "\r\n\r\n<div class=\"container-fluid\">\r\n  <h1 class=\"text-center\">Welcome!</h1>\r\n  <!-- Second navbar for categories -->\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container\">\r\n      <!-- Brand and toggle get grouped for better mobile display -->\r\n      <div class=\"navbar-header\">\r\n        <a class=\"navbar-brand\" routerLink=\"/\" routerLinkActive=\"active\">Home</a>\r\n      </div>\r\n\r\n      <!-- Collect the nav links, forms, and other content for toggling -->\r\n      <div class=\"collapse navbar-collapse\" id=\"navbar-collapse-1\">\r\n        <ul class=\"nav navbar-nav navbar-right\">\r\n\r\n          <li><a routerLink=\"/list\" routerLinkActive=\"active\">Todo list</a></li>\r\n          <li><a routerLink=\"/helloworld\" routerLinkActive=\"active\">Hello world</a></li>\r\n          <li *ngIf=\"!httpService.userLogged\"><a routerLink=\"/login\" routerLinkActive=\"active\">Login</a></li>\r\n          <li *ngIf=\"httpService.userLogged\"><a [routerLink]=\"['profile', 0]\" routerLinkActive=\"active\">My profile</a></li>\r\n          <li *ngIf=\"httpService.userLogged\"><a class=\"activeLink\" (click)=\"disconnect()\">Log out</a></li>\r\n        </ul>\r\n      </div><!-- /.navbar-collapse -->\r\n    </div><!-- /.container -->\r\n  </nav><!-- /.navbar -->\r\n</div>\r\n<router-outlet></router-outlet>\r\n"
 
 /***/ }),
 
-/***/ 691:
+/***/ 693:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\r\n  <h2>What is your name?</h2>\r\n  <input type=\"text\" [(ngModel)]=\"name\"/>\r\n  <button class=\"btn btn-default\" (click)=\"sendMessage()\">Submit</button>\r\n  <h1>{{message}}</h1>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 692:
+/***/ 694:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\r\n  <h2>Welcome</h2>\r\n  <div class=\"jumbotron\">\r\n    <p>This is the home view.</p>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 693:
+/***/ 695:
 /***/ (function(module, exports) {
 
 module.exports = "<div  class=\"container\" *ngIf=\"task\">\r\n  <h2>{{task.name}} details!</h2>\r\n  <div>\r\n    <label>id: </label>{{task.id}}</div>\r\n  <div>\r\n    <label>name: </label>\r\n    <input [(ngModel)]=\"task.name\" placeholder=\"name\" />\r\n  </div>\r\n  <div>\r\n  <label>description: </label>\r\n  <input [(ngModel)]=\"task.description\" placeholder=\"description\" />\r\n</div>\r\n  <button class=\"btn btn-default\" (click)=\"goBack()\">Back</button>\r\n  <button class=\"btn btn-default\" (click)=\"save()\">Save</button>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 694:
+/***/ 696:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\r\n  <h2>Todo List</h2>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-4\">\r\n      <div class=\"panel panel-default\">\r\n        <ul class=\"list-group\">\r\n          <li class=\"list-group-item\" *ngFor=\"let task of tasks\">\r\n            <button class=\"btn btn-default\" (click)=\"delete(task);\"><span class=\"glyphicon glyphicon-remove\" ></span></button>\r\n            <button class=\"btn btn-default\" (click)=\"goto(task)\"><span class=\"glyphicon glyphicon-info-sign\" ></span></button>\r\n            <span class=\"pull-right\">{{task.name}}</span>\r\n            <span class=\"pull-right\">{{task.description}}</span>\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n\r\n  <form class=\"form-horizontal\">\r\n    <fieldset>\r\n      <!-- Form Name -->\r\n      <legend>Add task</legend>\r\n\r\n      <div class=\"form-group\">\r\n        <label class=\"col-md-4 control-label pull-left\" for=\"name\">Name</label>\r\n        <div class=\"col-md-4 pull-left\">\r\n          <input id=\"name\" name=\"name\" type=\"text\" placeholder=\"Name\" class=\"form-control input-md\" #task_name/>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"form-group\">\r\n        <label class=\"col-md-4 control-label pull-left\" for=\"description\">Description</label>\r\n        <div class=\"col-md-4 pull-left\">\r\n          <input id=\"description\" name=\"description\" type=\"text\" placeholder=\"Description\" class=\"form-control input-md\"\r\n                 #task_description/>\r\n        </div>\r\n      </div>\r\n    </fieldset>\r\n  </form>\r\n  <button class=\"btn btn-primary\"\r\n          (click)=\"add(task_name.value, task_description.value); task_name.value=''; task_description.value='';\">\r\n    Add\r\n  </button>\r\n\r\n</div>\r\n\r\n"
 
 /***/ }),
 
-/***/ 695:
+/***/ 697:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\r\n  <h2>Login</h2>\r\n  <form class=\"form-horizontal\">\r\n    <fieldset>\r\n\r\n      <div class=\"form-group\">\r\n        <label class=\"col-md-4 control-label pull-left\" for=\"username\">Username</label>\r\n        <div class=\"col-md-4 pull-left\">\r\n          <input id=\"username\" name=\"username\" type=\"text\" placeholder=\"Username\" class=\"form-control input-md\" #username/>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"form-group\">\r\n        <label class=\"col-md-4 control-label pull-left\" for=\"password\">password</label>\r\n        <div class=\"col-md-4 pull-left\">\r\n          <input id=\"password\" name=\"password\" type=\"password\" placeholder=\"password\" class=\"form-control input-md\"\r\n                 #password/>\r\n        </div>\r\n      </div>\r\n\r\n    </fieldset>\r\n  </form>\r\n  <button class=\"btn btn-primary\"\r\n          (click)=\"login(username.value, password.value); username.value=''; password.value='';\">\r\n    Submit\r\n  </button>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 696:
+/***/ 698:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div *ngIf=\"user\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-6\">\r\n        <div class=\"panel panel-default\">\r\n          <h3>{{user.username}}</h3>\r\n          <ul class=\"list-group\">\r\n            <li class=\"list-group-item\">Email : {{user.email}}</li>\r\n            <li class=\"list-group-item\">First name : {{user.firstName}}</li>\r\n            <li class=\"list-group-item\">Last name : {{user.lastName}}</li>\r\n            <li class=\"list-group-item\">Roles : {{user.roles}}</li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-6\">\r\n        <div class=\"panel panel-default\">\r\n          <h4>Phone numbers</h4>\r\n          <ul class=\"list-group\" *ngFor=\"let phone of user.telephones\">\r\n            <li class=\"list-group-item\">{{phone.number}}, {{phone.type}}</li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-6\">\r\n        <div class=\"panel panel-default\">\r\n          <h4>Addresses</h4>\r\n          <ul class=\"list-group\" *ngFor=\"let address of user.addresses\">\r\n            <li class=\"list-group-item\">{{address.houseNumber}}, {{address.streetName}}</li>\r\n            <li class=\"list-group-item\">{{address.addresDetails}}</li>\r\n            <li class=\"list-group-item\">{{address.postcode}}</li>\r\n            <li class=\"list-group-item\">{{address.city}}</li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n  <div *ngIf=\"user\">\r\n    <div class=\"row\">\r\n      <div class=\"col-md-6\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading\">\r\n            <h3>{{user.username}}</h3>\r\n          </div>\r\n          <ul class=\"list-group\">\r\n            <li class=\"list-group-item\">Email : {{user.email}}</li>\r\n            <li class=\"list-group-item\">First name : {{user.firstName}}</li>\r\n            <li class=\"list-group-item\">Last name : {{user.lastName}}</li>\r\n            <li class=\"list-group-item\">Roles : {{user.roles}}</li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-6\">\r\n        <div class=\"panel panel-default\">\r\n          <div class=\"panel-heading\">\r\n            <h4>Phone numbers</h4>\r\n          </div>\r\n          <ul class=\"list-group\" *ngFor=\"let phone of user.telephones\">\r\n            <li class=\"list-group-item\">{{phone.number}}, {{phone.type}}</li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div class=\"row\">\r\n      <div class=\"col-md-6\">\r\n        <div class=\"panel-heading\">\r\n          <div class=\"panel panel-default\">\r\n          </div>\r\n          <h4>Addresses</h4>\r\n          <ul class=\"list-group\" *ngFor=\"let address of user.addresses\">\r\n            <li class=\"list-group-item\">{{address.houseNumber}}, {{address.streetName}}</li>\r\n            <li class=\"list-group-item\">{{address.addresDetails}}</li>\r\n            <li class=\"list-group-item\">{{address.postcode}}</li>\r\n            <li class=\"list-group-item\">{{address.city}}</li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 719:
+/***/ 721:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(407);
@@ -1136,5 +1189,5 @@ module.exports = __webpack_require__(407);
 
 /***/ })
 
-},[719]);
+},[721]);
 //# sourceMappingURL=main.bundle.js.map

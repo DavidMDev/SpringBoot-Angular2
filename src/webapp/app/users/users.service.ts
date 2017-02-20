@@ -60,21 +60,42 @@ export class UserService {
       this.httpService.get(url)
         .then(res => {
           console.log('user : ', res.json());
-          let obj = res.json();
-          let user = new User();
-          user.username = obj.userName;
-          user.firstName = obj.firstName;
-          user.lastName = obj.lastName;
-          user.email = obj.email;
-          user.id = obj.id;
-          user.roles = obj.roles;
-          let telephones = Array<Telephone>();
-          let addresses = Array<Address>();
-          user.telephones = telephones;
-          user.addresses = addresses;
+          let user = this.mapUser(res);
           resolve(user);
         }).catch(reject);
     })
       .catch(this.handleError);
+  }
+
+  private mapUser(res) {
+    let obj = res.json();
+    let user = new User();
+    user.username = obj.userName;
+    user.firstName = obj.firstName;
+    user.lastName = obj.lastName;
+    user.email = obj.email;
+    user.id = obj.id;
+    user.roles = obj.roles;
+    let telephones = Array<Telephone>();
+    let addresses = Array<Address>();
+    obj.telephones.forEach(telephoneJSON => {
+      let telephone = new Telephone();
+      telephone.id = telephoneJSON.id;
+      telephone.number = telephoneJSON.number;
+      telephone.type = telephoneJSON.type;
+      telephones.push(telephone);
+    });
+    obj.addresses.forEach(addressJSON => {
+      let address = new Address();
+      address.id = addressJSON.id;
+      address.addressDetails = addressJSON.addressDetails;
+      address.streetName = addressJSON.streetName;
+      address.houseNumber = addressJSON.houseNumber;
+      address.postcode = addressJSON.postcode;
+      address.city = addressJSON.city;
+    });
+    user.telephones = telephones;
+    user.addresses = addresses;
+    return user;
   }
 }
