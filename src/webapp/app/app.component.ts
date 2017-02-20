@@ -1,12 +1,11 @@
 import {Component, Input, ViewContainerRef} from '@angular/core';
 import {Http, Response} from '@angular/http';
-import {RouterOutlet} from "@angular/router";
 import {HttpService} from "./http/http.service";
 import {ToastsManager} from "ng2-toastr";
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.css'],
 })
 export class AppComponent {
   private messageUrl: string;
@@ -33,5 +32,10 @@ export class AppComponent {
     this.http.get(this.messageUrl).subscribe((data: Response) => {
       this.message = data.text();
     });
+  }
+
+  public disconnect(){
+    this.httpService.logOut();
+    this.toastr.info('You have successfully logged out.');
   }
 }

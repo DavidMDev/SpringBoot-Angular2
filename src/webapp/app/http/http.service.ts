@@ -106,6 +106,7 @@ export class HttpService {
   logOut() {
     this.userLogged = false;
     this.localStorageService.set('csrf_token', '');
+    this.toastr.info('You have been logged out.');
   }
 
   private handleError(reject, error) {

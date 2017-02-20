@@ -19,7 +19,7 @@ export class LoginComponent {
     this.httpService.login(username, password).then(result => {
       if (result) {
         this.router.navigate(['/']).then(() => {
-          this.toastr.info('You have logged in.');
+          this.toastr.info('You have successfully logged in.');
         });
       }
     }).catch(error => {

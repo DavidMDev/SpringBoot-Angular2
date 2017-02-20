@@ -9,10 +9,12 @@ import {TodoComponent} from "./todolist/todo.component";
 import {TodoService} from "./todolist/todo.service";
 import {HelloworldComponent} from "./helloworld/helloworld.component";
 import {TodoDetailComponent} from "./todolist/todo-detail.component";
-import {UsersComponent} from "./users/users.component";
+import {UsersComponent} from "./users/users-profile.component";
 import {HttpService} from "./http/http.service";
 import {LoginComponent} from "./users/login.component";
 import {ToastModule} from "ng2-toastr";
+import {HomeComponent} from "./home/home.component";
+import {UserService} from "./users/users.service";
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import {ToastModule} from "ng2-toastr";
     HelloworldComponent,
     TodoDetailComponent,
     UsersComponent,
-    LoginComponent
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ import {ToastModule} from "ng2-toastr";
     }),
     ToastModule.forRoot()
   ],
-  providers: [TodoService, HttpService],
+  providers: [TodoService, HttpService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

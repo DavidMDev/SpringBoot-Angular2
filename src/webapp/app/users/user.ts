@@ -1,4 +1,11 @@
+import {Telephone} from "./telephone";
+import {Address} from "./address";
 export class User{
-  username = '';
-  token = '';
+  id: number;
+  username: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  telephones: Array<Telephone>;
+  addresses: Array<Address>;
 }

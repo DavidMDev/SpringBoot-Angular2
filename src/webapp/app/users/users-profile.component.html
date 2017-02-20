@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <h3>{{user.username}}</h3>
+        <ul class="list-group">
+          <li class="list-group-item">Email : {{user.email}}</li>
+          <li class="list-group-item">First name : {{user.firstName}}</li>
+          <li class="list-group-item">Last name : {{user.lastName}}</li>
+          <li class="list-group-item">Roles : {{user.roles}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <h4>Phone numbers</h4>
+        <ul class="list-group" *ngFor="let phone of user.telephones">
+          <li class="list-group-item">{{phone.number}}, {{phone.type}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-default">
+        <h4>Addresses</h4>
+        <ul class="list-group" *ngFor="let address of user.addresses">
+          <li class="list-group-item">{{address.houseNumber}}, {{address.streetName}}</li>
+          <li class="list-group-item">{{address.addresDetails}}</li>
+          <li class="list-group-item">{{address.postcode}}</li>
+          <li class="list-group-item">{{address.city}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

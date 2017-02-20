@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Address {
 	@Id
@@ -17,10 +19,13 @@ public class Address {
 	private int houseNumber;
 	@NotNull
 	private String streetName;
-	private String addresDetails;
+	private String addressDetails;
 	@NotNull
 	private int postCode;
+	@NotNull
+	private String city;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user")
 	private Account user;
@@ -31,6 +36,14 @@ public class Address {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	public int getHouseNumber() {
@@ -49,12 +62,12 @@ public class Address {
 		this.streetName = streetName;
 	}
 
-	public String getAddresDetails() {
-		return addresDetails;
+	public String getAddressDetails() {
+		return addressDetails;
 	}
 
-	public void setAddresDetails(String addresDetails) {
-		this.addresDetails = addresDetails;
+	public void setAddressDetails(String addresDetails) {
+		this.addressDetails = addresDetails;
 	}
 
 	public int getPostCode() {
@@ -73,11 +86,11 @@ public class Address {
 		this.user = user;
 	}
 
-	public Address(int houseNumber, String streetName, String addresDetails, int postCode) {
+	public Address(int houseNumber, String streetName, String addressDetails, int postCode) {
 		super();
 		this.houseNumber = houseNumber;
 		this.streetName = streetName;
-		this.addresDetails = addresDetails;
+		this.addressDetails = addressDetails;
 		this.postCode = postCode;
 	}
 

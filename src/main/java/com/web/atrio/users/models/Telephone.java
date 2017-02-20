@@ -8,6 +8,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Telephone {
 
@@ -19,6 +21,7 @@ public class Telephone {
 	@NotNull
 	private String type;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "user")
 	private Account user;
