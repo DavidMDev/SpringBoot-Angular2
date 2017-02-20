@@ -1,5 +1,5 @@
 export class Address{
-  postcode: number;
+  postcode: string;
   streetName: string;
   addressDetails: string;
   houseNumber: number;

@@ -17,7 +17,7 @@ public class Telephone {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotNull
-	private int number;
+	private String number;
 	@NotNull
 	private String type;
 
@@ -34,11 +34,11 @@ public class Telephone {
 		this.id = id;
 	}
 
-	public int getNumber() {
+	public String getNumber() {
 		return number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 
@@ -58,7 +58,7 @@ public class Telephone {
 		this.user = user;
 	}
 
-	public Telephone(int number, String type) {
+	public Telephone(String number, String type) {
 		super();
 		this.number = number;
 		this.type = type;

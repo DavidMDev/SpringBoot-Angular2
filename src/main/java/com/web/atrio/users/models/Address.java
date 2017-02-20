@@ -16,12 +16,12 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	@NotNull
-	private int houseNumber;
+	private String houseNumber;
 	@NotNull
 	private String streetName;
 	private String addressDetails;
 	@NotNull
-	private int postCode;
+	private String postCode;
 	@NotNull
 	private String city;
 
@@ -46,11 +46,11 @@ public class Address {
 		this.city = city;
 	}
 
-	public int getHouseNumber() {
+	public String getHouseNumber() {
 		return houseNumber;
 	}
 
-	public void setHouseNumber(int houseNumber) {
+	public void setHouseNumber(String houseNumber) {
 		this.houseNumber = houseNumber;
 	}
 
@@ -70,11 +70,11 @@ public class Address {
 		this.addressDetails = addresDetails;
 	}
 
-	public int getPostCode() {
+	public String getPostCode() {
 		return postCode;
 	}
 
-	public void setPostCode(int postCode) {
+	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
 
@@ -86,7 +86,7 @@ public class Address {
 		this.user = user;
 	}
 
-	public Address(int houseNumber, String streetName, String addressDetails, int postCode) {
+	public Address(String houseNumber, String streetName, String addressDetails, String postCode) {
 		super();
 		this.houseNumber = houseNumber;
 		this.streetName = streetName;
