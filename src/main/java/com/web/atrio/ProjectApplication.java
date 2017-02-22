@@ -40,7 +40,7 @@ public class ProjectApplication {
 				address.setStreetName("Rue du Luan");
 				address.setCity("Balma");
 				address.setHouseNumber("4");
-				address.setPostCode("31130");
+				address.setPostcode("31130");
 				address.setUser(user);
 				addressRepository.save(address);
 				

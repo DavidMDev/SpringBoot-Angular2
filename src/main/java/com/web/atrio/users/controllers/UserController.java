@@ -59,7 +59,7 @@ public class UserController {
 	public ResponseEntity<Account> updateUser(@RequestBody Account user) throws UnauthorizedException {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
-		if (user.getUserName().equals(name)) {
+		if (user.getUsername().equals(name)) {
 			user = accountRepository.save(user);
 			return new ResponseEntity<Account>(user, HttpStatus.OK);
 		} else {
@@ -84,6 +84,6 @@ public class UserController {
 	@RequestMapping(value = "/api/me", method = RequestMethod.GET)
 	public ResponseEntity<Account> getMe(HttpServletRequest request) {
 		String username = AuthenticatedUsersService.getUser(request.getSession().getId());
-		return new ResponseEntity<Account>(accountRepository.findByUserName(username), HttpStatus.OK);
+		return new ResponseEntity<Account>(accountRepository.findByUsername(username), HttpStatus.OK);
 	}
 }

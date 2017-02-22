@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {User} from "./User";
+import {User} from "./user";
 
 import 'rxjs/add/operator/toPromise';
 import {HttpService} from "../http/http.service";
@@ -67,10 +67,11 @@ export class UserService {
       .catch(this.handleError);
   }
 
+  //map a user object
   private mapUser(res) {
     let obj = res.json();
     let user = new User();
-    user.username = obj.userName;
+    user.username = obj.username;
     user.firstName = obj.firstName;
     user.lastName = obj.lastName;
     user.email = obj.email;
@@ -78,6 +79,7 @@ export class UserService {
     user.roles = obj.roles;
     let telephones = Array<Telephone>();
     let addresses = Array<Address>();
+    //map nested object Telephone list
     obj.telephones.forEach(telephoneJSON => {
       let telephone = new Telephone();
       telephone.id = telephoneJSON.id;
@@ -85,6 +87,7 @@ export class UserService {
       telephone.type = telephoneJSON.type;
       telephones.push(telephone);
     });
+    //map nested object Address list
     obj.addresses.forEach(addressJSON => {
       let address = new Address();
       address.id = addressJSON.id;
@@ -93,9 +96,11 @@ export class UserService {
       address.houseNumber = addressJSON.houseNumber;
       address.postcode = addressJSON.postcode;
       address.city = addressJSON.city;
+      addresses.push(address);
     });
     user.telephones = telephones;
     user.addresses = addresses;
+    console.log(user);
     return user;
   }
 }

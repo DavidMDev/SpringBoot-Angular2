@@ -33,13 +33,13 @@ public class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdap
 		return new UserDetailsService() {
 			@Override
 			public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-				Account account = accountRepository.findByUserName(username);
+				Account account = accountRepository.findByUsername(username);
 				String authorityString = RoleService.getAuthorityStringSeperatedByCommas(account);
 
 				if (account != null) {
 					List<GrantedAuthority> authList = AuthorityUtils
 							.commaSeparatedStringToAuthorityList(authorityString);
-					return new User(account.getUserName(), account.getPassword(), true, true, true, true, authList);
+					return new User(account.getUsername(), account.getPassword(), true, true, true, true, authList);
 				} else {
 					throw new UsernameNotFoundException("could not find the user '" + username + "'");
 				}

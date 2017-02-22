@@ -30,12 +30,12 @@
     <div class="row" *ngIf="user.addresses.length > 0">
       <div class="col-md-6">
         <div class="panel-heading">
-          <div class="panel panel-default">
-          </div>
           <h4>Addresses</h4>
+        </div>
+          <div class="panel panel-default">
           <ul class="list-group" *ngFor="let address of user.addresses">
             <li class="list-group-item">{{address.houseNumber}}, {{address.streetName}}</li>
-            <li class="list-group-item">{{address.addressDetails}}</li>
+            <li class="list-group-item" *ngIf="address.addressDetails">{{address.addressDetails}}</li>
             <li class="list-group-item">{{address.postcode}}</li>
             <li class="list-group-item">{{address.city}}</li>
           </ul>

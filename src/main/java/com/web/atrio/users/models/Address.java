@@ -21,7 +21,7 @@ public class Address {
 	private String streetName;
 	private String addressDetails;
 	@NotNull
-	private String postCode;
+	private String postcode;
 	@NotNull
 	private String city;
 
@@ -70,12 +70,12 @@ public class Address {
 		this.addressDetails = addresDetails;
 	}
 
-	public String getPostCode() {
-		return postCode;
+	public String getPostcode() {
+		return postcode;
 	}
 
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
+	public void setPostcode(String postcode) {
+		this.postcode = postcode;
 	}
 
 	public Account getUser() {
@@ -86,12 +86,12 @@ public class Address {
 		this.user = user;
 	}
 
-	public Address(String houseNumber, String streetName, String addressDetails, String postCode) {
+	public Address(String houseNumber, String streetName, String addressDetails, String postcode) {
 		super();
 		this.houseNumber = houseNumber;
 		this.streetName = streetName;
 		this.addressDetails = addressDetails;
-		this.postCode = postCode;
+		this.postcode = postcode;
 	}
 
 	public Address() {

@@ -29,7 +29,7 @@ public class Account {
 
 	@NotNull
 	@Column(unique = true)
-	private String userName;
+	private String username;
 
 	@JsonIgnore
 	@NotNull
@@ -118,12 +118,12 @@ public class Account {
 		this.password = password;
 	}
 
-	public String getUserName() {
-		return userName;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserName(String username) {
+		this.username = username;
 	}
 
 	public Set<Telephone> getTelephones() {
@@ -134,10 +134,11 @@ public class Account {
 		this.telephones = telephones;
 	}
 
-	public Account(String email, String password, String firstName, String lastName, Set<Address> addresses) {
+	public Account(String email, String username, String password, String firstName, String lastName, Set<Address> addresses) {
 		super();
 		this.addRole("USER");
 		this.email = email;
+		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
