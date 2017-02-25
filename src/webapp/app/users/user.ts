@@ -1,5 +1,5 @@
-import {Telephone} from "./telephone";
-import {Address} from "./address";
+import {Telephone} from "./telephones/telephone";
+import {Address} from "./addresses/address";
 export class User{
   id: number;
   username: string;

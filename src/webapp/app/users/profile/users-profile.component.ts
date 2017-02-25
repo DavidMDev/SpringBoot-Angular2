@@ -1,14 +1,14 @@
 import {Component, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {User} from "./user";
-import {UserService} from "./users.service";
+import {User} from "../user";
+import {UserService} from "../services/users.service";
 import {Location}               from '@angular/common';
 
 @Component({
   moduleId: module.id,
   selector: 'users',
   templateUrl: 'users-profile.component.html',
-  styleUrls: ['./users.component.css']
+  styleUrls: ['../users.component.css']
 })
 
 export class UsersComponent implements OnInit {

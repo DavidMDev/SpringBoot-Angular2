@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
-import {User} from "./user";
+import {User} from "../user";
 
 import 'rxjs/add/operator/toPromise';
-import {HttpService} from "../http/http.service";
-import {Telephone} from "./telephone";
-import {Address} from "./address";
+import {HttpService} from "../../http/http.service";
+import {Telephone} from "../telephones/telephone";
+import {Address} from "../addresses/address";
 
 @Injectable()
 export class UserService {

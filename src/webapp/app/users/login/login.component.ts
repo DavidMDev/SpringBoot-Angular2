@@ -1,13 +1,13 @@
 import {Component} from "@angular/core";
-import {HttpService} from "../http/http.service";
+import {HttpService} from "../../http/http.service";
 import {Router} from "@angular/router";
 import {ToastsManager} from "ng2-toastr";
 
 @Component({
   moduleId: module.id,
   selector: 'login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./users.component.css']
+  templateUrl: 'login.component.html',
+  styleUrls: ['../users.component.css']
 })
 
 export class LoginComponent {

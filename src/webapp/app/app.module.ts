@@ -9,12 +9,12 @@ import {TodoComponent} from "./todolist/todo.component";
 import {TodoService} from "./todolist/todo.service";
 import {HelloworldComponent} from "./helloworld/helloworld.component";
 import {TodoDetailComponent} from "./todolist/todo-detail.component";
-import {UsersComponent} from "./users/users-profile.component";
+import {UsersComponent} from "./users/profile/users-profile.component";
 import {HttpService} from "./http/http.service";
-import {LoginComponent} from "./users/login.component";
+import {LoginComponent} from "./users/login/login.component";
 import {ToastModule} from "ng2-toastr";
 import {HomeComponent} from "./home/home.component";
-import {UserService} from "./users/users.service";
+import {UserService} from "./users/services/users.service";
 
 @NgModule({
   declarations: [
