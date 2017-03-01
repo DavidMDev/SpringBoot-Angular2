@@ -15,6 +15,7 @@ import {LoginComponent} from "./users/login/login.component";
 import {ToastModule} from "ng2-toastr";
 import {HomeComponent} from "./home/home.component";
 import {UserService} from "./users/services/users.service";
+import {SignupComponent} from "./users/login/signup.component";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {UserService} from "./users/services/users.service";
     TodoDetailComponent,
     UsersComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

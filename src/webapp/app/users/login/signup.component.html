@@ -1,0 +1,67 @@
+<div class="container">
+<form class="form-horizontal">
+  <fieldset>
+    <h1>Sign up</h1>
+    <!-- First name input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="firstName">First name</label>
+      <div class="col-md-4">
+        <input id="firstName" type="text" placeholder="First name" class="form-control input-md"
+               required="true" #firstName>
+      </div>
+    </div>
+    <!-- Last name input -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="lastName">Last name</label>
+      <div class="col-md-4">
+        <input id="lastName" type="text" placeholder="Last name" class="form-control input-md"
+               required="true" #lastName>
+      </div>
+    </div>
+    <!-- Username input -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="username">Username</label>
+      <div class="col-md-4">
+        <input id="username" type="text" placeholder="Username" class="form-control input-md"
+               required="true" #username>
+      </div>
+    </div>
+
+    <!-- Email input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="email">Email</label>
+      <div class="col-md-4">
+        <input id="email" type="text" placeholder="Email" class="form-control input-md"
+               required="true" #email>
+
+      </div>
+    </div>
+
+    <!-- Password input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="password">Password</label>
+      <div class="col-md-4">
+        <input id="password" type="password" placeholder="Password"
+               class="form-control input-md" required="true" #password>
+      </div>
+    </div>
+    <!-- Repeat password input-->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="repeatpassword">Repeat password</label>
+      <div class="col-md-4">
+        <input id="repeatpassword" type="password" placeholder="Repeat password"
+               class="form-control input-md" required="true" #repeatPassword>
+      </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="signup"></label>
+      <div class="col-md-4">
+        <button id="signup" class="btn btn-success" (click)="signup(firstName.value, lastName.value, username.value, email.value, password.value, repeatPassword.value)">Sign Up</button>
+      </div>
+    </div>
+
+  </fieldset>
+</form>
+</div>

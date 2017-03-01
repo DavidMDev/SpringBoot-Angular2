@@ -8,6 +8,7 @@ import {UsersComponent} from "./users/profile/users-profile.component";
 import {LoginComponent} from "./users/login/login.component";
 import {AppComponent} from "./app.component";
 import {HomeComponent} from "./home/home.component";
+import {SignupComponent} from "./users/login/signup.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full', component: HomeComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'detail/:id', component: TodoDetailComponent },
   { path: 'profile/:id', component: UsersComponent },
   { path: 'profile/me', component: UsersComponent},
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent}
 ];
 
 @NgModule({

@@ -17,13 +17,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.web.atrio.configuration.AuthenticatedUsersService;
 import com.web.atrio.configuration.CSRFCustomRepository;
+import com.web.atrio.exceptions.ConflictException;
 import com.web.atrio.exceptions.NotFoundException;
 import com.web.atrio.exceptions.UnauthorizedException;
 import com.web.atrio.users.models.Account;
+import com.web.atrio.users.models.AccountForm;
 import com.web.atrio.users.repositories.AccountRepository;
 
 @RestController
@@ -41,9 +44,20 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/api/users", method = RequestMethod.POST)
-	public ResponseEntity<Account> createUser(@RequestBody Account user) {
-		accountRepository.save(user);
-		return new ResponseEntity<Account>(user, HttpStatus.CREATED);
+	public ResponseEntity<Account> createUser(@RequestBody AccountForm accountForm) throws ConflictException {
+		Account dbUser = accountRepository.findByUsername(accountForm.getUsername());
+		if (dbUser == null) {
+			Account user = new Account();
+			user.setEmail(accountForm.getEmail());
+			user.setFirstName(accountForm.getFirstName());
+			user.setLastName(accountForm.getLastName());
+			user.setPassword(accountForm.getPassword());
+			user.setUserName(accountForm.getUsername());
+			accountRepository.save(user);
+			return new ResponseEntity<Account>(user, HttpStatus.CREATED);
+		} else {
+			throw new ConflictException();
+		}
 	}
 
 	@RequestMapping(value = "/api/users/{userId}", method = RequestMethod.DELETE)
@@ -56,12 +70,22 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/api/users", method = RequestMethod.PUT)
-	public ResponseEntity<Account> updateUser(@RequestBody Account user) throws UnauthorizedException {
+	public ResponseEntity<Account> updateUser(@RequestBody AccountForm accountForm) throws UnauthorizedException {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String name = auth.getName();
-		if (user.getUsername().equals(name)) {
-			user = accountRepository.save(user);
-			return new ResponseEntity<Account>(user, HttpStatus.OK);
+		if (accountForm.getUsername().equals(name)) {
+			Account user = accountRepository.findByUsername(accountForm.getUsername());
+			if (user.getPassword().equals(accountForm.getPassword())) {
+				user.setEmail(accountForm.getEmail());
+				user.setFirstName(accountForm.getFirstName());
+				user.setLastName(accountForm.getLastName());
+				user.setPassword(accountForm.getPassword());
+				user.setUserName(accountForm.getUsername());
+				user = accountRepository.save(user);
+				return new ResponseEntity<Account>(user, HttpStatus.OK);
+			} else {
+				throw new UnauthorizedException();
+			}
 		} else {
 			throw new UnauthorizedException();
 		}

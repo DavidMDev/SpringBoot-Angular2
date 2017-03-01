@@ -8,7 +8,7 @@ import {Address} from "../addresses/address";
 
 @Injectable()
 export class UserService {
-  private usersUrl = "users/";
+  private usersUrl = "users";
 
   constructor(private httpService: HttpService) {
   }
@@ -28,9 +28,9 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  createUser(name: string, description: string): Promise<User[]> {
+  createUser(firstName: string, lastName: string, username: string, email: string, password: string): Promise<User[]> {
     return this.httpService
-      .post(this.usersUrl, JSON.stringify({name: name, description: description}))
+      .post(this.usersUrl, {firstName: firstName, lastName: lastName,username: username, password: password, email: email})
       .then(res => <User[]>(res.json()))
       .catch(this.handleError);
   }
@@ -47,9 +47,9 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  public modifyUser(user: User) {
+  public modifyUser(firstName: string, lastName: string, username: string, email: string, password: string) {
     const url = `${this.usersUrl}`;
-    return this.httpService.put(url, JSON.stringify(user))
+    return this.httpService.put(url, {firstName: firstName, lastName: lastName,username: username, password: password, email: email})
       .then(res => <User>(res.json()))
       .catch(this.handleError);
   }
