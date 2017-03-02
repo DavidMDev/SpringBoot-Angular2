@@ -83,15 +83,14 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 		} catch (ConfigurationException e) {
 			e.printStackTrace();
 		}
-
+		boolean check = false;
 		for (Route route : routes) {
 			HttpMethod httpMethod = ConfigurationAccessor.getHttpMethodFromString(method);
-			boolean check = false;
-			String routeUrl = "";
-			if (httpMethod.equals(route.getMethod())) {
-				routeUrl = route.getUrl();
+			
+			String routeUrl = route.getUrl();
+			if (httpMethod.equals(route.getMethod()) && !check) {
 
-				if (hasOneAsterisk(routeUrl)) {
+				if (hasOneAsterisk(routeUrl) && !check) {
 					check = compareWithOneAsterisk(routeUrl, url);
 				}
 				if (hasTwoAsterisks(routeUrl) && !check) {
@@ -101,11 +100,8 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 					check = routeUrl.equals(url);
 				}
 			}
-			if (check) {
-				return true;
-			}
 		}
-		return false;
+		return check;
 	}
 
 	private boolean compareWithOneAsterisk(String routeUrl, String url) {

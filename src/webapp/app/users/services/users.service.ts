@@ -77,31 +77,6 @@ export class UserService {
     user.email = obj.email;
     user.id = obj.id;
     user.roles = obj.roles;
-    /*
-    let telephones = Array<Telephone>();
-    let addresses = Array<Address>();
-    //map nested object Telephone list
-    obj.telephones.forEach(telephoneJSON => {
-      let telephone = new Telephone();
-      telephone.id = telephoneJSON.id;
-      telephone.number = telephoneJSON.number;
-      telephone.type = telephoneJSON.type;
-      telephones.push(telephone);
-    });
-    //map nested object Address list
-    obj.addresses.forEach(addressJSON => {
-      let address = new Address();
-      address.id = addressJSON.id;
-      address.addressDetails = addressJSON.addressDetails;
-      address.streetName = addressJSON.streetName;
-      address.houseNumber = addressJSON.houseNumber;
-      address.postcode = addressJSON.postcode;
-      address.city = addressJSON.city;
-      addresses.push(address);
-    });
-    user.telephones = telephones;
-    user.addresses = addresses;
-    */
     console.log(user);
     return user;
   }

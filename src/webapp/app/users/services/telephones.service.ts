@@ -10,27 +10,55 @@ export class TelephoneService {
   constructor(private httpService: HttpService) {
   }
 
-  getTelephones(): Promise<Telephone[]> {
-    return this.httpService.get(this.telephoneUrl)
-      .then(res => {
-        console.log(res);
-          <Telephone[]>(res.json());
-        }
-      ).catch(this.handleError);
+  public getTelephones(): Promise<Telephone[]> {
+    return new Promise((resolve, reject) => {
+      this.httpService.get(this.telephoneUrl)
+        .then(res => {
+            let telephonesJSON = res.json();
+            let telephones = Array<Telephone>();
+            telephonesJSON.forEach(telephoneJSON => {
+              telephones.push(this.mapTelephone(telephoneJSON));
+            });
+            resolve(telephones);
+          }
+        ).catch((err) => {
+        reject(this.handleError(err));
+      });
+    });
   }
 
-  deleteTelephone(id: number) {
-    const url = `${this.telephoneUrl}${id}`;
-    return this.httpService.delete(url)
-      .then(res => <Telephone[]>(res.json()))
-      .catch(this.handleError);
+  public deleteTelephone(id: number): Promise<Telephone[]> {
+    return new Promise((resolve, reject) => {
+      const url = `${this.telephoneUrl}${id}`;
+      this.httpService.delete(url)
+        .then(res => {
+            let telephonesJSON = res.json();
+            let telephones = Array<Telephone>();
+            telephonesJSON.forEach(telephoneJSON => {
+              telephones.push(this.mapTelephone(telephoneJSON));
+            });
+            resolve(telephones);
+          }
+        ).catch((err) => {
+        reject(this.handleError(err));
+      });
+    });
   }
 
-  createTelephone(name: string, description: string): Promise<Telephone[]> {
-    return this.httpService
-      .post(this.telephoneUrl, JSON.stringify({name: name, description: description}))
-      .then(res => <Telephone[]>(res.json()))
-      .catch(this.handleError);
+  public createTelephone(number: string, type: string): Promise<Telephone[]> {
+    return new Promise((resolve, reject) => {
+      this.httpService
+        .post(this.telephoneUrl, {number: number, type: type})
+        .then(res => {
+          let telephonesJSON = res.json();
+          let telephones = Array<Telephone>();
+          telephonesJSON.forEach(telephoneJSON => {
+            telephones.push(this.mapTelephone(telephoneJSON));
+          });
+          resolve(telephones);
+        })
+        .catch(this.handleError);
+    });
   }
 
   private handleError(error: any): Promise<any> {
@@ -39,17 +67,25 @@ export class TelephoneService {
   }
 
   public getTelephone(id: number) {
-    const url = `${this.telephoneUrl}/${id}`;
+    const url = `${this.telephoneUrl}${id}`;
     return this.httpService.get(url)
-      .then(res => <Telephone>(res.json()))
+      .then(res => this.mapTelephone(res.json()))
       .catch(this.handleError);
   }
 
   public modifyTelephone(telephone: Telephone) {
     const url = `${this.telephoneUrl}`;
-    return this.httpService.put(url, JSON.stringify(telephone))
-      .then(res => <Telephone>(res.json()))
+    let obj = {id: telephone.id, type: telephone.type, number: telephone.number};
+    return this.httpService.put(url, obj)
+      .then(res => this.mapTelephone(res.json()))
       .catch(this.handleError);
   }
 
+  private mapTelephone(telephoneJSON): Telephone {
+    let telephone = new Telephone();
+    telephone.id = telephoneJSON.id;
+    telephone.number = telephoneJSON.number;
+    telephone.type = telephoneJSON.type;
+    return telephone;
+  }
 }

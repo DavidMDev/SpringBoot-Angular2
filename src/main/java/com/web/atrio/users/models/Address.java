@@ -97,4 +97,14 @@ public class Address {
 	public Address() {
 		super();
 	}
+	
+	@Override
+	public boolean equals(Object obj){
+		Address that = (Address) obj;
+		if(this.id == that.id && this.user == that.user){
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

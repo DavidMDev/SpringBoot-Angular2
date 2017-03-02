@@ -68,4 +68,14 @@ public class Telephone {
 		super();
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		Telephone that = (Telephone) obj;
+		if(this.id == that.id && this.user == that.user){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

@@ -16,20 +16,14 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
-        <button class="btn btn-primary" (click)="phonesMenuEnable()">Manage phones</button>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
+          <button class="btn btn-primary" (click)="phonesMenuEnable()">Manage phones</button>
           <button class="btn btn-primary" (click)="addressMenuEnable()">Manage addresses</button>
-        </div>
-      </div>
     </div>
-    <div *ngIf="phoneMenu">
+    <div *ngIf="phoneMenu" class="row">
     <phone-manager></phone-manager>
     </div>
 
-    <div *ngIf="addressMenu">
+    <div *ngIf="addressMenu" class="row">
       <address-manager></address-manager>
     </div>
   </div>

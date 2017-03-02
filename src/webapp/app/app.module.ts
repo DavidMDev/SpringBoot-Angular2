@@ -20,6 +20,8 @@ import {TelephoneComponent} from "./users/telephones/telephone.component";
 import {TelephoneService} from "./users/services/telephones.service";
 import {AddressComponent} from "./users/addresses/address.component";
 import {AddressService} from "./users/services/address.service";
+import {TelephoneDetailComponent} from "./users/telephones/telephone-detail.component";
+import {AddressDetailComponent} from "./users/addresses/address-detail.component";
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {AddressService} from "./users/services/address.service";
     HomeComponent,
     SignupComponent,
     TelephoneComponent,
-    AddressComponent
+    TelephoneDetailComponent,
+    AddressComponent,
+    AddressDetailComponent
   ],
   imports: [
     BrowserModule,

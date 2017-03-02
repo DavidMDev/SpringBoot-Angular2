@@ -51,24 +51,24 @@ public class Account {
 
 	@NotNull
 	private String roles = "";
-	
+
 	public List<String> getRoles() {
 		return RoleService.getRoles(this);
 	}
 
-	public String sendRolesToRoleService(){
+	public String sendRolesToRoleService() {
 		return this.roles;
 	}
-	
-	public void setRolesByRoleService(String roles){
+
+	public void setRolesByRoleService(String roles) {
 		this.roles = roles;
 	}
-	
+
 	public void addRole(String role) {
 		RoleService.addRole(this, role);
 	}
-	
-	public void removeRole(String role){
+
+	public void removeRole(String role) {
 		RoleService.removeRole(this, role);
 	}
 
@@ -136,7 +136,8 @@ public class Account {
 		this.telephones = telephones;
 	}
 
-	public Account(String email, String username, String password, String firstName, String lastName, Set<Address> addresses) {
+	public Account(String email, String username, String password, String firstName, String lastName,
+			Set<Address> addresses) {
 		super();
 		this.addRole("USER");
 		this.email = email;
@@ -152,4 +153,12 @@ public class Account {
 		this.addRole("USER");
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		Account that = (Account) obj;
+		if (this.username == that.username && this.email == that.email && this.id == that.id) {
+			return true;
+		} else
+			return false;
+	}
 }
