@@ -1,6 +1,9 @@
 package com.web.atrio.users.controllers;
 
 import java.util.List;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.web.atrio.configuration.AuthenticatedUsersService;
 import com.web.atrio.exceptions.NotFoundException;
 import com.web.atrio.exceptions.UnauthorizedException;
 import com.web.atrio.users.models.Account;
@@ -73,12 +77,11 @@ public class TelephoneController {
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ResponseEntity<List> getTelephones() {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName();
-		Account user = accountRepository.findByUsername(name);
+	public ResponseEntity<Set> getTelephones(HttpServletRequest request) {
+		String username = AuthenticatedUsersService.getUser(request.getSession(false).getId());
+		Account user = accountRepository.findByUsername(username);
 		// Return the telephones of the user who sent the request
-		return new ResponseEntity<List>((List) user.getTelephones(), HttpStatus.OK);
+		return new ResponseEntity<Set>(user.getTelephones(), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{telephoneId}", method = RequestMethod.GET)

@@ -10,11 +10,12 @@ import com.web.atrio.users.repositories.AccountRepository;
 public class UserService {
 	@Autowired
 	private static AccountRepository accountRepository;
-	
-public static Account getUser(){
-	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	String name = auth.getName();
-	Account userLoggedIn = accountRepository.findByUsername(name);
-	return userLoggedIn;
-}
+
+	public static Account getUser() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String name;
+		name = auth.getName();
+		Account userLoggedIn = accountRepository.findByUsername(name);
+		return userLoggedIn;
+	}
 }
