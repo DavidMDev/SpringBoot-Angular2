@@ -4,7 +4,7 @@ import {Address} from "../addresses/address";
 
 @Injectable()
 export class AddressService {
-  private addresssUrl = "/addresses";
+  private addresssUrl = "addresses/";
 
   constructor(private httpService: HttpService) {
   }
@@ -18,7 +18,7 @@ export class AddressService {
   }
 
   deleteAddress(id: number) {
-    const url = `${this.addresssUrl}/${id}`;
+    const url = `${this.addresssUrl}${id}`;
     return this.httpService.delete(url)
       .then(res => <Address[]>(res.json()))
       .catch(this.handleError);
@@ -37,7 +37,7 @@ export class AddressService {
   }
 
   public getAddress(id: number) {
-    const url = `${this.addresssUrl}/${id}`;
+    const url = `${this.addresssUrl}${id}`;
     return this.httpService.get(url)
       .then(res => <Address>(res.json()))
       .catch(this.handleError);

@@ -41,9 +41,11 @@ public class Account {
 	@NotNull
 	private String lastName;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<Address> addresses;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private Set<Telephone> telephones;
 

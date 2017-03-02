@@ -5,7 +5,7 @@ import {Telephone} from "../telephones/telephone";
 
 @Injectable()
 export class TelephoneService {
-  private telephoneUrl = "/telephones";
+  private telephoneUrl = "telephones/";
 
   constructor(private httpService: HttpService) {
   }
@@ -13,13 +13,14 @@ export class TelephoneService {
   getTelephones(): Promise<Telephone[]> {
     return this.httpService.get(this.telephoneUrl)
       .then(res => {
+        console.log(res);
           <Telephone[]>(res.json());
         }
       ).catch(this.handleError);
   }
 
   deleteTelephone(id: number) {
-    const url = `${this.telephoneUrl}/${id}`;
+    const url = `${this.telephoneUrl}${id}`;
     return this.httpService.delete(url)
       .then(res => <Telephone[]>(res.json()))
       .catch(this.handleError);

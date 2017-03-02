@@ -18,6 +18,13 @@ public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapte
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors();
+		
+		// Set up basic auth to obtain token
+		http.antMatcher("/api/token").httpBasic().and().authorizeRequests().anyRequest();
+		// Require csrf token authentication for anything else
+		http.csrf().csrfTokenRepository(csrfRepository);
+		http.authorizeRequests().anyRequest().authenticated();
+		http.authorizeRequests().antMatchers("/public/**").permitAll();
 		List<Route> routes = ConfigurationAccessor.getRoutes();
 		for (Route route : routes) {
 			for (String role : route.getPermissions()) {
@@ -27,12 +34,6 @@ public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapte
 				}
 			}
 		}
-		// Set up basic auth to obtain token
-		http.antMatcher("/api/token").httpBasic().and().authorizeRequests().anyRequest();
-		// Require csrf token authentication for anything else
-		http.csrf().csrfTokenRepository(csrfRepository);
-		http.authorizeRequests().anyRequest().authenticated();
-		http.authorizeRequests().antMatchers("/public/**").permitAll();
 	}
 
 	@Override

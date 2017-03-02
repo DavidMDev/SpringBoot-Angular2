@@ -1,0 +1,12 @@
+<div class="row" *ngIf="telephones.length > 0">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4>Phone numbers</h4>
+            </div>
+            <ul class="list-group" *ngFor="let phone of telephones">
+                <li class="list-group-item">{{phone.number}}, {{phone.type}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

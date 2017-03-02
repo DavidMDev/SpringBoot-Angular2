@@ -43,7 +43,7 @@ public class UserController {
 		return Collections.singletonMap("token", CSRFCustomRepository.getTokenFromSessionId(request));
 	}
 
-	@RequestMapping(value = "/api/users", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/users/", method = RequestMethod.POST)
 	public ResponseEntity<Account> createUser(@RequestBody AccountForm accountForm) throws ConflictException {
 		Account dbUser = accountRepository.findByUsername(accountForm.getUsername());
 		if (dbUser == null) {

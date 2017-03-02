@@ -6,7 +6,7 @@ export class User{
   firstName: string;
   lastName: string;
   email: string;
-  telephones: Array<Telephone>;
-  addresses: Array<Address>;
+  //telephones: Array<Telephone>;
+  //addresses: Array<Address>;
   roles: Array<string>;
 }

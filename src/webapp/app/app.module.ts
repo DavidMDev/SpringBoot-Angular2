@@ -16,6 +16,10 @@ import {ToastModule} from "ng2-toastr";
 import {HomeComponent} from "./home/home.component";
 import {UserService} from "./users/services/users.service";
 import {SignupComponent} from "./users/login/signup.component";
+import {TelephoneComponent} from "./users/telephones/telephone.component";
+import {TelephoneService} from "./users/services/telephones.service";
+import {AddressComponent} from "./users/addresses/address.component";
+import {AddressService} from "./users/services/address.service";
 
 @NgModule({
   declarations: [
@@ -26,7 +30,9 @@ import {SignupComponent} from "./users/login/signup.component";
     UsersComponent,
     LoginComponent,
     HomeComponent,
-    SignupComponent
+    SignupComponent,
+    TelephoneComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,7 @@ import {SignupComponent} from "./users/login/signup.component";
     }),
     ToastModule.forRoot()
   ],
-  providers: [TodoService, HttpService, UserService],
+  providers: [TodoService, HttpService, UserService, TelephoneService, AddressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

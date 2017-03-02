@@ -1,0 +1,15 @@
+<div class="row" *ngIf="addresses.length > 0">
+    <div class="col-md-6">
+        <div class="panel-heading">
+            <h4>Addresses</h4>
+        </div>
+        <div class="panel panel-default">
+            <ul class="list-group" *ngFor="let address of addresses">
+                <li class="list-group-item">{{address.houseNumber}}, {{address.streetName}}</li>
+                <li class="list-group-item" *ngIf="address.addressDetails">{{address.addressDetails}}</li>
+                <li class="list-group-item">{{address.postcode}}</li>
+                <li class="list-group-item">{{address.city}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

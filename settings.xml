@@ -7,7 +7,7 @@
 		<!-- api routes -->
     	<!-- user routes -->
 		<route>
-			<url>/api/users</url>
+			<url>/api/users/</url>
 			<method>POST</method>
 			<roles>NONE</roles>
 		</route>
@@ -35,6 +35,12 @@
 			<url>/api/me</url>
 			<method>GET</method>
 			<roles>USER</roles>
+		</route>
+		<!-- telephone routes -->
+		<route>
+		<url>/api/telephones/</url>
+		<method>GET</method>
+		<roles>USER</roles>
 		</route>
     	<!-- task routes -->
 		<route>

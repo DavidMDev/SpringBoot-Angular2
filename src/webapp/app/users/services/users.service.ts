@@ -8,7 +8,7 @@ import {Address} from "../addresses/address";
 
 @Injectable()
 export class UserService {
-  private usersUrl = "users";
+  private usersUrl = "users/";
 
   constructor(private httpService: HttpService) {
   }
@@ -22,7 +22,7 @@ export class UserService {
   }
 
   deleteUser(id: number) {
-    const url = `${this.usersUrl}/${id}`;
+    const url = `${this.usersUrl}${id}`;
     return this.httpService.delete(url)
       .then(res => <User[]>(res.json()))
       .catch(this.handleError);
@@ -41,7 +41,7 @@ export class UserService {
   }
 
   public getUser(id: number) {
-    const url = `${this.usersUrl}/${id}`;
+    const url = `${this.usersUrl}${id}`;
     return this.httpService.get(url)
       .then(res => <User>(res.json()))
       .catch(this.handleError);
@@ -77,6 +77,7 @@ export class UserService {
     user.email = obj.email;
     user.id = obj.id;
     user.roles = obj.roles;
+    /*
     let telephones = Array<Telephone>();
     let addresses = Array<Address>();
     //map nested object Telephone list
@@ -100,6 +101,7 @@ export class UserService {
     });
     user.telephones = telephones;
     user.addresses = addresses;
+    */
     console.log(user);
     return user;
   }

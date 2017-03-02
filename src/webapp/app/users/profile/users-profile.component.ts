@@ -14,7 +14,8 @@ import {Location}               from '@angular/common';
 export class UsersComponent implements OnInit {
   private user: User;
   private sub: any;
-
+  private phoneMenu = false;
+  private addressMenu = false;
 
 
   ngOnInit(): void {
@@ -42,5 +43,13 @@ export class UsersComponent implements OnInit {
   ngOnDestroy(): void {
     this.sub.unsubscribe();
     this.user = null;
+  }
+
+  phonesMenuEnable(): void {
+    this.phoneMenu ? this.phoneMenu = false : this.phoneMenu = true;
+  }
+
+  addressMenuEnable(): void{
+    this.addressMenu ? this.addressMenu = false : this.addressMenu = true;
   }
 }

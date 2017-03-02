@@ -15,32 +15,22 @@
         </div>
       </div>
     </div>
-    <div class="row" *ngIf="user.telephones.length > 0">
+    <div class="row">
       <div class="col-md-6">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h4>Phone numbers</h4>
-          </div>
-          <ul class="list-group" *ngFor="let phone of user.telephones">
-            <li class="list-group-item">{{phone.number}}, {{phone.type}}</li>
-          </ul>
+        <button class="btn btn-primary" (click)="phonesMenuEnable()">Manage phones</button>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <button class="btn btn-primary" (click)="addressMenuEnable()">Manage addresses</button>
         </div>
       </div>
     </div>
-    <div class="row" *ngIf="user.addresses.length > 0">
-      <div class="col-md-6">
-        <div class="panel-heading">
-          <h4>Addresses</h4>
-        </div>
-          <div class="panel panel-default">
-          <ul class="list-group" *ngFor="let address of user.addresses">
-            <li class="list-group-item">{{address.houseNumber}}, {{address.streetName}}</li>
-            <li class="list-group-item" *ngIf="address.addressDetails">{{address.addressDetails}}</li>
-            <li class="list-group-item">{{address.postcode}}</li>
-            <li class="list-group-item">{{address.city}}</li>
-          </ul>
-        </div>
-      </div>
+    <div *ngIf="phoneMenu">
+    <phone-manager></phone-manager>
+    </div>
+
+    <div *ngIf="addressMenu">
+      <address-manager></address-manager>
     </div>
   </div>
 </div>
