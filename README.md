@@ -16,7 +16,7 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used [angula
 
 ## Project file structure
 
-- Exactly the same as Spring-boot or AngularJS, except the files for AngularJS are located in `src/webapp`
+- Exactly the same as Spring-boot or AngularJS, except the files for AngularJS are located in `src/webapp` to avoid confusion
 - Folder `src/webapp/` contains the sources AngularJS app
 - Folder `src/main/` contains the sources for the Spring-boot app
 - Folder `src/test/` contains the sources for the Spring-boot app JUnit testing
@@ -56,12 +56,12 @@ The project was made using AngularJS 2.4.4 and Spring-boot 1.4.3. I used [angula
 
 The application uses Cross Site Request Forgery protection using csrf tokens for authentication.
 
-- Users can obtain a token by doing a Http GET request on `/api/token` with BASIC auth
+- Users can obtain a token by doing a Http GET request on `/api/token` with BASIC authentication
 - The token must then be placed inside a header called X-XSRF-TOKEN
 - As long as it is valid the user is logged in
 - If the user calls a resource that requires authentication and does not possess the X-XSRF-TOKEN header, the user session is destroyed
 
 ### TODO
 
-- Finish user management on the front-end
+- Implement client-side profile editing
 - Implement dynamic roles in the database (loaded from settings.xml at startup)
