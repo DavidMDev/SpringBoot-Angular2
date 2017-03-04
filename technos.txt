@@ -33,9 +33,12 @@ technologies used :
 	Server:
 		- https://spring.io/guides/gs/spring-boot/
 		- https://spring.io/guides/gs/rest-service/
+		- https://spring.io/guides/gs/accessing-data-jpa/
 
 	Client:
 		- https://angular.io/docs/ts/latest/tutorial/
 		- https://www.youtube.com/watch?v=bJKejcQJqHE
 		- https://www.youtube.com/watch?v=-zW1zHqsdyc
 		- https://www.sitepoint.com/angular-2-tutorial/
+
+	Integration angular2 + spring-boot : https://www.javacodegeeks.com/2016/11/recipe-getting-started-spring-boot-angular-2.html
