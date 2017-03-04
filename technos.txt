@@ -27,3 +27,15 @@ technologies used :
 		- client architecture: controllers which use services to access data from the server and display data in html templates
 
 - Tutorials to follow:
+	Concepts:
+		- https://scotch.io/tutorials/the-ins-and-outs-of-token-based-authentication
+
+	Server:
+		- https://spring.io/guides/gs/spring-boot/
+		- https://spring.io/guides/gs/rest-service/
+
+	Client:
+		- https://angular.io/docs/ts/latest/tutorial/
+		- https://www.youtube.com/watch?v=bJKejcQJqHE
+		- https://www.youtube.com/watch?v=-zW1zHqsdyc
+		- https://www.sitepoint.com/angular-2-tutorial/
