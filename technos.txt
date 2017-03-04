@@ -1,0 +1,29 @@
+technologies used :
+- Languages/frameworks :
+	Server:
+		Java 8
+		Spring-boot 1.4.3
+		Gradle to build project / download dependecies
+	Client: 
+		Typescript, html5, css3
+		AngularJS 2.4 (generated with angular-cli)
+		npm (node package manager) to build project / download dependencies
+	Database:
+		mysql
+
+- Concepts :
+	Server:
+		- token-based authentication (csrf tokens), initial login done with BASIC auth method
+		- jpa / hibernate annotations for database management
+		- use of apache commons xml configuration library
+		- rest crud controllers, objects exchanged are in JSON format
+		- spring-web-security configured with custom configuration classes and a OncePerRequestFilter object
+		- Password encryption done automatically, security ensured by use of a secret passphrase, stored programmatically
+		
+	Client:
+		- encapsulation of http service in order to use the server's authentication
+		- rest crud services
+		- bootstrap implemented
+		- client architecture: controllers which use services to access data from the server and display data in html templates
+
+- Tutorials to follow:
