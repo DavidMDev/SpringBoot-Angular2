@@ -27,6 +27,7 @@ import com.web.atrio.exceptions.ConflictException;
 import com.web.atrio.exceptions.NotFoundException;
 import com.web.atrio.exceptions.UnauthorizedException;
 import com.web.atrio.users.models.Account;
+import com.web.atrio.users.models.AccountForm;
 import com.web.atrio.users.repositories.AccountRepository;
 import com.web.atrio.users.utilities.UserService;
 
@@ -45,11 +46,17 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/api/users/", method = RequestMethod.POST)
-	public ResponseEntity<Account> createUser(@RequestBody Account account) throws ConflictException {
-		Account dbUser = accountRepository.findByUsername(account.getUsername());
+	public ResponseEntity<Account> createUser(@RequestBody AccountForm accountForm) throws ConflictException {
+		Account user = new Account();
+		Account dbUser = accountRepository.findByUsername(accountForm.getUsername());
 		if (dbUser == null) {
-			accountRepository.save(account);
-			return new ResponseEntity<Account>(account, HttpStatus.CREATED);
+			user.setEmail(accountForm.getEmail());
+			user.setFirstName(accountForm.getFirstName());
+			user.setLastName(accountForm.getLastName());
+			user.setUserName(accountForm.getUsername());
+			user.setPassword(accountForm.getPassword());
+			accountRepository.save(user);
+			return new ResponseEntity<Account>(user, HttpStatus.CREATED);
 		} else {
 			throw new ConflictException();
 		}
@@ -65,11 +72,17 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/api/users", method = RequestMethod.PUT)
-	public ResponseEntity<Account> updateUser(@RequestBody Account user, HttpServletRequest request)
+	public ResponseEntity<Account> updateUser(@RequestBody AccountForm accountForm, HttpServletRequest request)
 			throws UnauthorizedException {
+		Account user = accountRepository.findByUsername(accountForm.getUsername());
 		Account userFromDB = accountRepository.findByUsername(UserService.getUser(request));
 		if (userFromDB.equals(user)) {
-			user = accountRepository.save(user);
+			user.setEmail(accountForm.getEmail());
+			user.setFirstName(accountForm.getFirstName());
+			user.setLastName(accountForm.getLastName());
+			user.setUserName(accountForm.getUsername());
+			user.setPassword(accountForm.getPassword());
+			accountRepository.save(user);
 			return new ResponseEntity<Account>(user, HttpStatus.OK);
 		} else {
 			throw new UnauthorizedException();
