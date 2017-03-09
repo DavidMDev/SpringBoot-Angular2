@@ -22,6 +22,7 @@ import {AddressComponent} from "./users/addresses/address.component";
 import {AddressService} from "./users/services/address.service";
 import {TelephoneDetailComponent} from "./users/telephones/telephone-detail.component";
 import {AddressDetailComponent} from "./users/addresses/address-detail.component";
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import {AddressDetailComponent} from "./users/addresses/address-detail.component
     HttpModule,
     JsonpModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     LocalStorageModule.withConfig({
       prefix: 'web-atrio-app',
       storageType: 'localStorage'

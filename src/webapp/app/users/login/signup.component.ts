@@ -16,7 +16,6 @@ export class SignupComponent {
   }
 
   signup(firstName: string, lastName: string, username: string, email: string, password: string, repeatPassword: string): void {
-    console.log(password, repeatPassword);
     if(password != repeatPassword){
         this.toastr.error('Passwords must be the same');
     } else {

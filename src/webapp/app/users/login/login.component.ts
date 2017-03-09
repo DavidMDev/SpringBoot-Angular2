@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {HttpService} from "../../http/http.service";
 import {Router} from "@angular/router";
 import {ToastsManager} from "ng2-toastr";
+import {FormBuilder, Validators, FormGroup, FormControl} from "@angular/forms";
 
 @Component({
   moduleId: module.id,
@@ -12,11 +13,17 @@ import {ToastsManager} from "ng2-toastr";
 
 export class LoginComponent {
 
-  constructor(private toastr: ToastsManager, private httpService: HttpService, private router: Router) {
+  constructor(private toastr: ToastsManager, private httpService: HttpService, private router: Router, private formBuilder: FormBuilder) {
   }
 
-  public login(username: string, password: string) {
-    this.httpService.login(username, password).then(result => {
+  public loginForm = this.formBuilder.group({
+    username: new FormControl("", Validators.required),
+    password: new FormControl("", Validators.required)
+  });
+
+  public login(event) {
+    let formData = this.loginForm.value;
+    this.httpService.login(formData.username, formData.password).then(result => {
       if (result) {
         this.router.navigate(['/']).then(() => {
           this.toastr.info('You have successfully logged in.');

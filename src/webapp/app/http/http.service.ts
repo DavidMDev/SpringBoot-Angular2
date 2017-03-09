@@ -10,7 +10,7 @@ export class HttpService {
   private contentTypeHeader = 'Content-Type';
   private contentTypeValue = 'application/json';
   private csrfHeader = 'X-XSRF-TOKEN';
-  private serverURL = 'http://localhost:8080/api/';
+  private serverURL = 'http://217.160.2.23:8020/api/';
   public userLogged = false;
 
   constructor(private toastr: ToastsManager, private http: Http, private router: Router, private localStorageService: LocalStorageService) {

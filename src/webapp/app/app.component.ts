@@ -25,9 +25,9 @@ export class AppComponent {
 
   public getMessage(name) {
     if (name != "") {
-      this.messageUrl = "http://localhost:8080/hello?name=" + name;
+      this.messageUrl = "http://217.160.2.23:8020/hello?name=" + name;
     } else {
-      this.messageUrl = "http://localhost:8080/hello";
+      this.messageUrl = "http://217.160.2.23:8020/hello";
     }
     this.http.get(this.messageUrl).subscribe((data: Response) => {
       this.message = data.text();

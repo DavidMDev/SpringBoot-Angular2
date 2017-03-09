@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class TodoService {
   private headers = new Headers({'Content-Type': 'application/json'});
-  private tasksUrl = "http://localhost:8080/tasks";
+  private tasksUrl = "http://217.160.2.23:8020/tasks";
 
   constructor(private http: Http) {
 }
