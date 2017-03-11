@@ -16,11 +16,13 @@ export class SignupComponent {
   constructor(private toastr: ToastsManager, private userService: UserService, private router: Router, private formBuilder: FormBuilder) {
   }
 
+  private emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
+
   public signupForm = this.formBuilder.group({
     firstName: new FormControl("", Validators.required),
     lastName: new FormControl("", Validators.required),
     username: new FormControl("", Validators.required),
-    email: new FormControl("", Validators.required),
+    email: new FormControl("", [Validators.required, Validators.pattern(this.emailRegex)]),
     password: new FormControl("", Validators.required),
     repeatPassword: new FormControl("", Validators.required)
   });
