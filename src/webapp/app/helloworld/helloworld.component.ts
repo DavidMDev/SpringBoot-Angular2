@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Http, Response} from '@angular/http';
-import {RouterOutlet} from "@angular/router";
+import {environment} from "../../environments/environment";
 @Component({
   selector: 'helloworld',
   templateUrl: './helloworld.component.html',
@@ -23,9 +23,9 @@ export class HelloworldComponent {
 
   public getMessage(name) {
     if (name != "") {
-      this.messageUrl = "http://217.160.2.23:8020/hello?name=" + name;
+      this.messageUrl = environment.apiHost + "/hello?name=" + name;
     } else {
-      this.messageUrl = "http://217.160.2.23:8020/hello";
+      this.messageUrl = environment.apiHost + "/hello";
     }
     this.http.get(this.messageUrl).subscribe((data: Response) => {
       this.message = data.text();

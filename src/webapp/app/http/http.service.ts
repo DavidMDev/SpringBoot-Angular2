@@ -3,6 +3,7 @@ import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 import {LocalStorageService} from 'angular-2-local-storage';
 import {ToastsManager} from "ng2-toastr";
+import { environment } from "../../environments/environment";
 
 
 @Injectable()
@@ -10,12 +11,13 @@ export class HttpService {
   private contentTypeHeader = 'Content-Type';
   private contentTypeValue = 'application/json';
   private csrfHeader = 'X-XSRF-TOKEN';
-  private serverURL = 'http://217.160.2.23:8020/api/';
+  private serverURL = environment.apiHost + '/api/';
   public userLogged = false;
 
   constructor(private toastr: ToastsManager, private http: Http, private router: Router, private localStorageService: LocalStorageService) {
     this.localStorageService.set('csrf_token', '');
     this.localStorageService.set('logged', false);
+
   }
 
   get(url: string): Promise<any> {

@@ -48,7 +48,12 @@ task npmBin << {
 
 task buildng(type: Exec) {
 	description = "Install Build AngularJS 2 frontend app"
-    commandLine = [ngBuildCommand, "build"]
+	if (project.hasProperty('prod')){
+		commandLine = [ngBuildCommand, "build", "--prod"]
+	} else {
+		commandLine = [ngBuildCommand, "build"]
+	}
+    
 
     //store the output instead of printing to the console:
     standardOutput = new ByteArrayOutputStream()
@@ -60,7 +65,6 @@ task buildng(type: Exec) {
 
     standardOutput = System.out
     errorOutput = System.out
-
 }
 
 apply plugin: 'java'

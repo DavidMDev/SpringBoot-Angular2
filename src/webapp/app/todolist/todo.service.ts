@@ -3,11 +3,12 @@ import {Task} from "./task";
 import {Http, Headers} from "@angular/http";
 
 import 'rxjs/add/operator/toPromise';
+import {environment} from "../../environments/environment";
 
 @Injectable()
 export class TodoService {
   private headers = new Headers({'Content-Type': 'application/json'});
-  private tasksUrl = "http://217.160.2.23:8020/tasks";
+  private tasksUrl = environment.apiHost + "/tasks";
 
   constructor(private http: Http) {
 }
