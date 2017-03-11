@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {Router} from "@angular/router";
 import {ToastsManager} from "ng2-toastr";
 import {UserService} from "../services/users.service";
+import {FormBuilder, FormControl, Validators} from "@angular/forms";
 
 @Component({
   moduleId: module.id,
@@ -12,14 +13,24 @@ import {UserService} from "../services/users.service";
 
 export class SignupComponent {
 
-  constructor(private toastr: ToastsManager, private userService: UserService, private router: Router) {
+  constructor(private toastr: ToastsManager, private userService: UserService, private router: Router, private formBuilder: FormBuilder) {
   }
 
-  signup(firstName: string, lastName: string, username: string, email: string, password: string, repeatPassword: string): void {
-    if(password != repeatPassword){
+  public signupForm = this.formBuilder.group({
+    firstName: new FormControl("", Validators.required),
+    lastName: new FormControl("", Validators.required),
+    username: new FormControl("", Validators.required),
+    email: new FormControl("", Validators.required),
+    password: new FormControl("", Validators.required),
+    repeatPassword: new FormControl("", Validators.required)
+  });
+
+  public signup(event): void {
+    let formData = this.signupForm.value;
+    if(formData.password != formData.repeatPassword){
         this.toastr.error('Passwords must be the same');
     } else {
-      this.userService.createUser(firstName, lastName, username, email, password).then( result => {
+      this.userService.createUser(formData.firstName, formData.lastName, formData.username, formData.email, formData.password).then( result => {
         if (result) {
           this.router.navigate(['/']).then(() => {
             this.toastr.info('You have successfully signed up.');
