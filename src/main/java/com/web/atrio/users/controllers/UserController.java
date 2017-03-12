@@ -71,22 +71,23 @@ public class UserController {
 		return new ResponseEntity<String>("User deleted", HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/api/users", method = RequestMethod.PUT)
-	public ResponseEntity<Account> updateUser(@RequestBody AccountForm accountForm, HttpServletRequest request)
-			throws UnauthorizedException {
-		Account user = accountRepository.findByUsername(accountForm.getUsername());
-		Account userFromDB = accountRepository.findByUsername(UserService.getUser(request));
-		if (userFromDB.equals(user)) {
-			user.setEmail(accountForm.getEmail());
-			user.setFirstName(accountForm.getFirstName());
-			user.setLastName(accountForm.getLastName());
-			user.setUserName(accountForm.getUsername());
-			user.setPassword(accountForm.getPassword());
-			accountRepository.save(user);
-			return new ResponseEntity<Account>(user, HttpStatus.OK);
-		} else {
-			throw new UnauthorizedException();
+	@RequestMapping(value = "/api/me/edit", method = RequestMethod.PUT)
+	public ResponseEntity updateProfile(@RequestBody AccountForm accountForm, HttpServletRequest request) {
+		Account accountFromDB = accountRepository.findByUsername(accountForm.getUsername());
+		Account accountFromRequest = accountRepository.findByUsername(UserService.getUser(request));
+		if(accountFromDB.equals(accountFromRequest)) {
+			if(accountFromRequest.getPassword() != null) {
+				accountFromDB.setPassword(accountFromRequest.getPassword());
+			}
+			if(accountFromRequest.getFirstName() != null) {
+				accountFromDB.setPassword(accountFromRequest.getFirstName());
+			}
+			if(accountFromRequest.getLastName() != null) {
+				accountFromDB.setPassword(accountFromRequest.getLastName());
+			}
+			accountRepository.save(accountFromDB);
 		}
+		return null;
 	}
 
 	@RequestMapping(value = "/api/users", method = RequestMethod.GET)
