@@ -13,4 +13,8 @@ public class ProjectApplicationTests {
 	public void contextLoads() {
 	}
 
+	@Test
+	public void createUser() {
+		
+	}
 }

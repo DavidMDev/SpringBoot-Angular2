@@ -1,8 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {User} from "../user";
 import {UserService} from "../services/users.service";
-import {Location}               from '@angular/common';
 
 @Component({
   moduleId: module.id,
@@ -37,7 +36,7 @@ export class UsersComponent implements OnInit {
     });
   }
 
-  constructor(private usersService: UserService, private route: ActivatedRoute, private location: Location) {
+  constructor(private usersService: UserService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnDestroy(): void {
@@ -51,5 +50,9 @@ export class UsersComponent implements OnInit {
 
   addressMenuEnable(): void{
     this.addressMenu ? this.addressMenu = false : this.addressMenu = true;
+  }
+
+  public editProfile(): void{
+    this.router.navigate(['/profile/me/edit']);
   }
 }

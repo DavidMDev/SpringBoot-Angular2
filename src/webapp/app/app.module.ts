@@ -23,6 +23,7 @@ import {AddressService} from "./users/services/address.service";
 import {TelephoneDetailComponent} from "./users/telephones/telephone-detail.component";
 import {AddressDetailComponent} from "./users/addresses/address-detail.component";
 import { ReactiveFormsModule } from '@angular/forms';
+import {UserEditComponent} from "./users/profile/user-profile-edit.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     TelephoneComponent,
     TelephoneDetailComponent,
     AddressComponent,
-    AddressDetailComponent
+    AddressDetailComponent,
+    UserEditComponent
   ],
   imports: [
     BrowserModule,

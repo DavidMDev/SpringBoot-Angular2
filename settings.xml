@@ -36,6 +36,11 @@
 			<method>GET</method>
 			<roles>USER</roles>
 		</route>
+		<route>
+			<url>/api/me/edit</url>
+			<method>PUT</method>
+			<roles>USER</roles>
+		</route>
 		<!-- address routes -->
 		<route>
 			<url>/api/addresses/</url>

@@ -72,22 +72,24 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/api/me/edit", method = RequestMethod.PUT)
-	public ResponseEntity updateProfile(@RequestBody AccountForm accountForm, HttpServletRequest request) {
+	public ResponseEntity updateProfile(@RequestBody AccountForm accountForm, HttpServletRequest request) throws UnauthorizedException {
 		Account accountFromDB = accountRepository.findByUsername(accountForm.getUsername());
 		Account accountFromRequest = accountRepository.findByUsername(UserService.getUser(request));
 		if(accountFromDB.equals(accountFromRequest)) {
 			if(accountFromRequest.getPassword() != null) {
 				accountFromDB.setPassword(accountFromRequest.getPassword());
 			}
-			if(accountFromRequest.getFirstName() != null) {
-				accountFromDB.setPassword(accountFromRequest.getFirstName());
+			if(accountForm.getFirstName() != null) {
+				accountFromDB.setFirstName(accountForm.getFirstName());
 			}
-			if(accountFromRequest.getLastName() != null) {
-				accountFromDB.setPassword(accountFromRequest.getLastName());
+			if(accountForm.getLastName() != null) {
+				accountFromDB.setLastName(accountForm.getLastName());
 			}
-			accountRepository.save(accountFromDB);
+			return new ResponseEntity<Account>(accountRepository.save(accountFromDB), HttpStatus.OK);
+			
+		} else {
+			throw new UnauthorizedException();
 		}
-		return null;
 	}
 
 	@RequestMapping(value = "/api/users", method = RequestMethod.GET)

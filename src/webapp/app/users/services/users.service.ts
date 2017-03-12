@@ -47,9 +47,9 @@ export class UserService {
       .catch(this.handleError);
   }
 
-  public modifyUser(firstName: string, lastName: string, username: string, email: string, password: string) {
-    const url = `${this.usersUrl}`;
-    return this.httpService.put(url, {firstName: firstName, lastName: lastName,username: username, password: password, email: email})
+  public modifyUser(object: any) {
+    const url = `/me/edit`;
+    return this.httpService.put(url, object)
       .then(res => <User>(res.json()))
       .catch(this.handleError);
   }
