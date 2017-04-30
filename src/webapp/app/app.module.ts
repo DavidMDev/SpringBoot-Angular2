@@ -24,6 +24,7 @@ import {TelephoneDetailComponent} from "./users/telephones/telephone-detail.comp
 import {AddressDetailComponent} from "./users/addresses/address-detail.component";
 import { ReactiveFormsModule } from '@angular/forms';
 import {UserEditComponent} from "./users/profile/user-profile-edit.component";
+import {NavbarComponent} from "./navbar/navbar.component";
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import {UserEditComponent} from "./users/profile/user-profile-edit.component";
     TelephoneDetailComponent,
     AddressComponent,
     AddressDetailComponent,
-    UserEditComponent
+    UserEditComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
