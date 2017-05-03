@@ -2,7 +2,7 @@ read -p "Do you wish to compile the server before starting? <y/n>" prompt
 if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
 then
 echo "Building server"
-./gradlew
+./gradlew -Pprod=true
 fi
 echo "Starting server"
 cp settings.xml ./build/libs/settings.xml
