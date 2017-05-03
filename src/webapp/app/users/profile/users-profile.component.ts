@@ -11,10 +11,10 @@ import {UserService} from "../services/users.service";
 })
 
 export class UsersComponent implements OnInit {
-  private user: User;
-  private sub: any;
-  private phoneMenu = false;
-  private addressMenu = false;
+  user: User;
+  sub: any;
+  phoneMenu = false;
+  addressMenu = false;
 
 
   ngOnInit(): void {

@@ -8,10 +8,10 @@ import { environment } from "../../environments/environment";
 
 @Injectable()
 export class HttpService {
-  private contentTypeHeader = 'Content-Type';
-  private contentTypeValue = 'application/json';
-  private csrfHeader = 'X-XSRF-TOKEN';
-  private serverURL = environment.apiHost + '/api/';
+  contentTypeHeader = 'Content-Type';
+  contentTypeValue = 'application/json';
+  csrfHeader = 'X-XSRF-TOKEN';
+  serverURL = environment.apiHost + '/api/';
   public userLogged = false;
 
   constructor(private toastr: ToastsManager, private http: Http, private router: Router, private localStorageService: LocalStorageService) {
@@ -108,7 +108,7 @@ export class HttpService {
     this.localStorageService.set('csrf_token', '');
   }
 
-  private handleError(reject, error) {
+  handleError(reject, error) {
 
     if (error.status === 403) {
       if (this.userLogged) {

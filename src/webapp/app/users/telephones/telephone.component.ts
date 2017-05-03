@@ -12,8 +12,8 @@ import {Telephone} from "./telephone";
 })
 
 export class TelephoneComponent implements OnInit {
-  private sub: any;
-  private telephones: Array<Telephone>;
+  sub: any;
+  telephones: Array<Telephone>;
 
   ngOnInit(): void {
     this.telephones = [];

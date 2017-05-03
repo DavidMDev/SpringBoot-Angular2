@@ -12,8 +12,8 @@ import {ToastsManager} from "ng2-toastr";
 })
 
 export class UserEditComponent implements OnInit {
-  private user: User;
-  private sub: any;
+  user: User;
+  sub: any;
 
 
   ngOnInit(): void {

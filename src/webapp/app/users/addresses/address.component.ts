@@ -12,8 +12,8 @@ import {Address} from "./address";
 })
 
 export class AddressComponent implements OnInit {
-  private sub: any;
-  private addresses: Array<Address>;
+  sub: any;
+  addresses: Array<Address>;
 
   ngOnInit(): void {
     this.addresses = [];

@@ -5,7 +5,7 @@ import {Telephone} from "../telephones/telephone";
 
 @Injectable()
 export class TelephoneService {
-  private telephoneUrl = "telephones/";
+  telephoneUrl = "telephones/";
 
   constructor(private httpService: HttpService) {
   }

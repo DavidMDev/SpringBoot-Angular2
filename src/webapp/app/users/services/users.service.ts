@@ -8,7 +8,7 @@ import {Address} from "../addresses/address";
 
 @Injectable()
 export class UserService {
-  private usersUrl = "users/";
+  usersUrl = "users/";
 
   constructor(private httpService: HttpService) {
   }

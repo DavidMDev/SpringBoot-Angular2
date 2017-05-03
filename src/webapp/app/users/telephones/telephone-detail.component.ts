@@ -13,8 +13,8 @@ import {ToastsManager} from "ng2-toastr";
 })
 
 export class TelephoneDetailComponent implements OnInit, OnDestroy {
-  private telephone: Telephone;
-  private sub: any;
+  telephone: Telephone;
+  sub: any;
 
   constructor(private toastr: ToastsManager, private telephoneService: TelephoneService, private route: ActivatedRoute, private location: Location) {
   }

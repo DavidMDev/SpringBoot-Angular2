@@ -1,13 +1,14 @@
 import {Component, Input} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {environment} from "../../environments/environment";
+
 @Component({
   selector: 'helloworld',
   templateUrl: './helloworld.component.html',
   styleUrls: ['./helloworld.component.css'],
 })
 export class HelloworldComponent {
-  private messageUrl: string;
+  messageUrl: string;
   message: string;
 
   constructor(private http: Http) {

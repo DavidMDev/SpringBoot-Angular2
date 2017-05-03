@@ -8,7 +8,7 @@ import {ToastsManager} from "ng2-toastr";
   styleUrls: ['app.component.css'],
 })
 export class AppComponent {
-  private messageUrl: string;
+  messageUrl: string;
   message: string;
 
   constructor(private toastr: ToastsManager, private vcr: ViewContainerRef, private http: Http, private httpService: HttpService) {
@@ -34,8 +34,4 @@ export class AppComponent {
     });
   }
 
-  public disconnect(){
-    this.httpService.logOut();
-    this.toastr.info('You have successfully logged out.');
-  }
 }

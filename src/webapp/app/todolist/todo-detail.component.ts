@@ -12,8 +12,8 @@ import { Location }               from '@angular/common';
 })
 
 export class TodoDetailComponent implements OnInit, OnDestroy {
-  private task: Task;
-  private sub: any;
+  task: Task;
+  sub: any;
   constructor(private todoService: TodoService, private route: ActivatedRoute, private location: Location) {}
 
   ngOnInit(): void {

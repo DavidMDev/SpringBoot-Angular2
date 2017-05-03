@@ -16,10 +16,10 @@
       <ul class="nav navbar-nav">
         <li><a routerLink="/list" routerLinkActive="active">Todo list</a></li>
         <li><a routerLink="/helloworld" routerLinkActive="active">Hello world</a></li>
-        <li *ngIf="!httpService.userLogged"><a routerLink="/login" routerLinkActive="active">Login</a></li>
-        <li *ngIf="!httpService.userLogged"><a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
-        <li *ngIf="httpService.userLogged"><a [routerLink]="['profile', 0]" routerLinkActive="active">My profile</a></li>
-        <li *ngIf="httpService.userLogged"><a class="activeLink" (click)="disconnect()">Log out</a></li>
+        <li *ngIf="!isLogged()"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+        <li *ngIf="!isLogged()"><a routerLink="/signup" routerLinkActive="active">Sign up</a></li>
+        <li *ngIf="isLogged()"><a [routerLink]="['profile', 0]" routerLinkActive="active">My profile</a></li>
+        <li *ngIf="isLogged()"><a class="activeLink" (click)="disconnect()">Log out</a></li>
       </ul>
     </div>
 </nav>

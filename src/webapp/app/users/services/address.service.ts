@@ -4,7 +4,7 @@ import {Address} from "../addresses/address";
 
 @Injectable()
 export class AddressService {
-  private addressUrl = "addresses/";
+  addressUrl = "addresses/";
 
   constructor(private httpService: HttpService) {
   }
