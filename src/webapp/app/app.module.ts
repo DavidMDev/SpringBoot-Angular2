@@ -25,6 +25,8 @@ import {AddressDetailComponent} from "./users/addresses/address-detail.component
 import { ReactiveFormsModule } from '@angular/forms';
 import {UserEditComponent} from "./users/profile/user-profile-edit.component";
 import {NavbarComponent} from "./navbar/navbar.component";
+import {ChatComponent} from "./chat/chat.component";
+import {ChatService} from "./chat/chat.service";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import {NavbarComponent} from "./navbar/navbar.component";
     AddressComponent,
     AddressDetailComponent,
     UserEditComponent,
-    NavbarComponent
+    NavbarComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,7 @@ import {NavbarComponent} from "./navbar/navbar.component";
     }),
     ToastModule.forRoot()
   ],
-  providers: [TodoService, HttpService, UserService, TelephoneService, AddressService],
+  providers: [TodoService, HttpService, UserService, TelephoneService, AddressService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

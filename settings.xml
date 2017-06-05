@@ -4,6 +4,11 @@
 	<!-- * : any variable, ** : any sub directory or variables -->
 	<!-- Routes must end with variables (No routes like "/people/*/groups/*") -->
 	<routes>
+		<route>
+			<url>/websocket</url>
+			<method>GET</method>
+			<roles>NONE</roles>
+		</route>
 		<!-- api routes -->
 		<!-- user routes -->
 		<route>

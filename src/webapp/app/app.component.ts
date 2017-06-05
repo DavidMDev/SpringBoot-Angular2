@@ -2,6 +2,7 @@ import {Component, Input, ViewContainerRef} from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {HttpService} from "./http/http.service";
 import {ToastsManager} from "ng2-toastr";
+import {environment} from "../environments/environment";
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -25,9 +26,9 @@ export class AppComponent {
 
   public getMessage(name) {
     if (name != "") {
-      this.messageUrl = "http://217.160.2.23:8020/hello?name=" + name;
+      this.messageUrl = environment.apiHost + "/hello?name=" + name;
     } else {
-      this.messageUrl = "http://217.160.2.23:8020/hello";
+      this.messageUrl = environment.apiHost + "/hello";
     }
     this.http.get(this.messageUrl).subscribe((data: Response) => {
       this.message = data.text();
