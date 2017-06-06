@@ -8,11 +8,11 @@
           </div>
           <ul class="list-group">
             <li class="list-group-item">Email : {{user.email}}</li>
-            <li class="list-group-item">First name : <input type="text" [(ngModel)]="user.firstName" required/></li>
-            <li class="list-group-item">Last name : <input type="text" [(ngModel)]="user.lastName" required/></li>
+            <li class="list-group-item">First name : <input type="text" class="form-control input-md" [(ngModel)]="user.firstName" required/></li>
+            <li class="list-group-item">Last name : <input type="text" class="form-control input-md" [(ngModel)]="user.lastName" required/></li>
             <li class="list-group-item">Roles : {{user.roles}}</li>
-            <li class="list-group-item">Password : <input type="password" [(ngModel)]="password"/></li>
-            <li class="list-group-item">Repeat Password : <input type="password" [(ngModel)]="repeatPassword"/></li>
+            <li class="list-group-item">Password : <input type="password" class="form-control input-md" [(ngModel)]="password"/></li>
+            <li class="list-group-item">Repeat Password : <input type="password" class="form-control input-md" [(ngModel)]="repeatPassword"/></li>
           </ul>
         </div>
       </div>

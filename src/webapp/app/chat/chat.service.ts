@@ -16,10 +16,10 @@ export class ChatService {
       this.listener.emit({"type": "open", "data": event});
     };
     this.socket.onclose = event => {
+      console.log(event);
       this.listener.emit({"type": "close", "data": event});
     };
     this.socket.onmessage = event => {
-      console.log(this.listener);
       this.listener.emit({"type": "message", "data": event.data});
     };
   }

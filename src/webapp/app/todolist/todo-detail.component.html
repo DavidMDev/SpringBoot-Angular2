@@ -4,11 +4,11 @@
     <label>id: </label>{{task.id}}</div>
   <div>
     <label>name: </label>
-    <input [(ngModel)]="task.name" placeholder="name" />
+    <input [(ngModel)]="task.name" class="form-control input-md" placeholder="name" />
   </div>
   <div>
   <label>description: </label>
-  <input [(ngModel)]="task.description" placeholder="description" />
+  <input [(ngModel)]="task.description" class="form-control input-md" placeholder="description" />
 </div>
   <button class="btn btn-default" (click)="goBack()">Back</button>
   <button class="btn btn-default" (click)="save()">Save</button>
