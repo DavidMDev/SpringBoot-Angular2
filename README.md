@@ -74,5 +74,5 @@ The application uses Cross Site Request Forgery protection using csrf tokens for
 
 ### TODO
 
-- Implement client-side profile editing
 - Implement dynamic roles in the database (loaded from settings.xml at startup)
+- Modify chat module to show connected users and support sending private messages
