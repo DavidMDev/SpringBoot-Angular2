@@ -142,5 +142,10 @@
 			<method>GET</method>
 			<roles>NONE</roles>
 		</route>
+		<route>
+			<url>/**</url>
+			<method>OPTIONS</method>
+			<roles>NONE</roles>
+		</route>
 	</routes>
 </configuration>

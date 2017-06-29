@@ -3,6 +3,7 @@ package com.web.atrio.configuration;
 import java.util.List;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -18,7 +19,7 @@ public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapte
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors();
-		
+
 		// Set up basic auth to obtain token
 		http.antMatcher("/api/token").httpBasic().and().authorizeRequests().anyRequest();
 		// Require csrf token authentication for anything else
@@ -47,8 +48,7 @@ public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapte
 				}
 			}
 		}
-		 web
-         .ignoring()
-            .antMatchers("/public/**");
+		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+		web.ignoring().antMatchers("/public/**");
 	}
 }

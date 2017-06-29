@@ -35,6 +35,11 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 		String url = request.getServletPath();
 		String auth = request.getHeader(BASIC_AUTH_HEADER_NAME);
 
+		if(method == "OPTIONS") {
+			filterChain.doFilter(request, response);
+			return;
+		}
+		
 		if (checkUrl(url, method)) {
 			filterChain.doFilter(request, response);
 			return;
