@@ -21,13 +21,13 @@ public class TodoController {
 	private static ArrayList<Task> tasks = new ArrayList<Task>();
 	private static int idCounter = 0;
 
-	@RequestMapping(value = "/tasks", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/tasks", method = RequestMethod.GET)
 	public ResponseEntity<List<Task>> getTasks() {
 		System.out.println("Tasks requested!");
 		return new ResponseEntity<List<Task>>(tasks, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/tasks", method = RequestMethod.POST)
+	@RequestMapping(value = "/api/tasks", method = RequestMethod.POST)
 	public ResponseEntity<List<Task>> addTask(@RequestBody Task task) {
 		idCounter++;
 		task.setId(idCounter);
@@ -36,7 +36,7 @@ public class TodoController {
 		return new ResponseEntity<List<Task>>(tasks, HttpStatus.CREATED);
 	}
 
-	@RequestMapping(value = "/tasks/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/tasks/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Task> getTask(@PathVariable(value = "id") int id){
 		Task result = null;
 		for(Task task: tasks){
@@ -48,7 +48,7 @@ public class TodoController {
 		return new ResponseEntity<Task>(result, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/tasks/{id}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/api/tasks/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<List<Task>> deleteTask(@PathVariable(value = "id") int id) {
 		Task toDelete = null;
 		for(Task task : tasks){
@@ -63,7 +63,7 @@ public class TodoController {
 		return new ResponseEntity<List<Task>>(tasks, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/tasks", method = RequestMethod.PUT)
+	@RequestMapping(value = "/api/tasks", method = RequestMethod.PUT)
 	public ResponseEntity<Task> updateTask(@RequestBody Task toUpdate){
 		for(Task task : tasks){
 			if(task.getId() == toUpdate.getId()){

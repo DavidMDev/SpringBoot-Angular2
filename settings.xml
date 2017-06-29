@@ -100,27 +100,27 @@
 		</route>
 		<!-- task routes -->
 		<route>
-			<url>/tasks</url>
+			<url>/api/tasks</url>
 			<method>GET</method>
 			<roles>NONE</roles>
 		</route>
 		<route>
-			<url>/tasks</url>
+			<url>/api/tasks</url>
 			<method>POST</method>
 			<roles>NONE</roles>
 		</route>
 		<route>
-			<url>/tasks/*</url>
+			<url>/api/tasks/*</url>
 			<method>GET</method>
 			<roles>NONE</roles>
 		</route>
 		<route>
-			<url>/tasks/*</url>
+			<url>/api/tasks/*</url>
 			<method>DELETE</method>
 			<roles>NONE</roles>
 		</route>
 		<route>
-			<url>/tasks</url>
+			<url>/api/tasks</url>
 			<method>PUT</method>
 			<roles>NONE</roles>
 		</route>
@@ -143,7 +143,7 @@
 			<roles>NONE</roles>
 		</route>
 		<route>
-			<url>/**</url>
+			<url>/api/*</url>
 			<method>OPTIONS</method>
 			<roles>NONE</roles>
 		</route>
