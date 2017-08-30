@@ -21,8 +21,15 @@ public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapte
 	RouteRepository routeRepository;
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		
+		Long size = this.routeRepository.count();
+		
+		if (size == 0) {
+			List<Route> routes = ConfigurationAccessor.getRoutes();
+			this.routeRepository.save(routes);
+		}
+		
 		http.cors();
-
 		// Set up basic auth to obtain token
 		http.antMatcher("/api/token").httpBasic().and().authorizeRequests().anyRequest();
 		// Require csrf token authentication for anything else

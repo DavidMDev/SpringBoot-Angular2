@@ -1,7 +1,7 @@
 package com.web.atrio.configuration;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.configuration.ConfigurationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -40,7 +39,7 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 		String url = request.getServletPath();
 		String auth = request.getHeader(BASIC_AUTH_HEADER_NAME);
 
-		if(method == "OPTIONS") {
+		if(method.equals("OPTIONS")) {
 			filterChain.doFilter(request, response);
 			return;
 		}
@@ -87,8 +86,8 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 	}
 
 	private boolean checkUrl(String url, String method) {
-		Iterable<Route> routes = null;
-			routes = routeRepository.findAll();
+		Iterable<Route> routes = this.getPublicRoutes();
+		
 		boolean check = false;
 		for (Route route : routes) {
 			HttpMethod httpMethod = ConfigurationAccessor.getHttpMethodFromString(method);
@@ -108,6 +107,20 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 			}
 		}
 		return check;
+	}
+
+	private Iterable<Route> getPublicRoutes() {
+		Iterable<Route> routes = this.routeRepository.findAll();
+		ArrayList<Route> publicRoutes = new ArrayList<Route>();
+		for(Route route : routes){
+			String[] roles = route.getPermissions();
+			for(String role : roles) {
+				if(role.equals("NONE")) {
+					publicRoutes.add(route);
+				}
+			}
+		}
+		return publicRoutes;
 	}
 
 	private boolean compareWithOneAsterisk(String routeUrl, String url) {

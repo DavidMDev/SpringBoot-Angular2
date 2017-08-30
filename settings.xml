@@ -130,6 +130,22 @@
 			<method>GET</method>
 			<roles>NONE</roles>
 		</route>
+		<!-- Permission routes -->
+		<route>
+			<url>/api/routes/</url>
+			<method>GET</method>
+			<roles>ADMIN</roles>
+		</route>
+		<route>
+			<url>/api/routes/*</url>
+			<method>GET</method>
+			<roles>ADMIN</roles>
+		</route>
+		<route>
+			<url>/api/routes/*</url>
+			<method>PUT</method>
+			<roles>ADMIN</roles>
+		</route>
 		<!-- public routes -->
 		<!-- Do not touch these -->
 		<route>

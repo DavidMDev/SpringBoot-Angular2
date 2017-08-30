@@ -25,23 +25,6 @@ public class ConfigurationAccessor {
 		return routesList;
 	}
 
-	public static List<Route> getPublicRoutes() throws ConfigurationException {
-		List<Route> routesList = new ArrayList<Route>();
-		List<HierarchicalConfiguration> routesXML = getXMLConfiguration();
-		for (HierarchicalConfiguration routeXML : routesXML) {
-			Route route = new Route();
-
-			route.setPermissions(routeXML.getStringArray("roles"));
-
-			if (route.getPermissions()[0].equals("NONE")) {
-				route.setUrl(routeXML.getString("url"));
-				route.setMethod(getHttpMethodFromString(routeXML.getString("method")));
-				routesList.add(route);
-			}
-		}
-		return routesList;
-	}
-
 	private static List<HierarchicalConfiguration> getXMLConfiguration() throws ConfigurationException {
 		
 		
