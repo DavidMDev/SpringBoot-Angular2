@@ -27,7 +27,6 @@ export class ChatComponent implements OnInit, OnDestroy {
         this.messages.push(data);
       }
       if (event.type == "close") {
-        console.log('hurrrr',event);
         if (event.data.code === 1007) {
           this.messages.push("/You are already connected");
         } else {
