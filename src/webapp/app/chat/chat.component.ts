@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {ChatService} from "./chat.service";
+import {ChatService} from './chat.service';
 
 
 @Component({
@@ -13,28 +13,28 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   public constructor(private socket: ChatService) {
     this.messages = [];
-    this.chatBox = "";
+    this.chatBox = '';
   }
 
   public ngOnInit() {
     this.socket.connect();
     this.socket.getEventListener().subscribe(event => {
-      if (event.type == "message") {
+      if (event.type === 'message') {
         let data = event.data;
         if (event.data.sender) {
-          data = event.data.sender + ": " + data;
+          data = event.data.sender + ': ' + data;
         }
         this.messages.push(data);
       }
-      if (event.type == "close") {
+      if (event.type === 'close') {
         if (event.data.code === 1007) {
-          this.messages.push("/You are already connected");
+          this.messages.push('/You are already connected');
         } else {
-          this.messages.push("/You have been disconnected");
+          this.messages.push('/You have been disconnected');
         }
       }
-      if (event.type == "open") {
-        this.messages.push("/You have successfully connected to the chat");
+      if (event.type === 'open') {
+        this.messages.push('/You have successfully connected to the chat');
       }
     });
   }
@@ -46,11 +46,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   public send() {
     if (this.chatBox) {
       this.socket.send(this.chatBox);
-      this.chatBox = "";
+      this.chatBox = '';
     }
   }
 
   public isSystemMessage(message: string) {
-    return message.startsWith("/") ? "<strong>" + message.substring(1) + "</strong>" : message;
+    return message.startsWith('/') ? '<strong>' + message.substring(1) + '</strong>' : message;
   }
 }
