@@ -2,6 +2,7 @@ package com.web.atrio.configuration;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -10,12 +11,14 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 import com.web.atrio.routes.models.Route;
+import com.web.atrio.routes.repositories.RouteRepository;
 
 @EnableWebSecurity
 @Configuration
 public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapter {
 	private static CSRFCustomRepository csrfRepository = new CSRFCustomRepository();
-
+	@Autowired
+	RouteRepository routeRepository;
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors();
@@ -26,7 +29,7 @@ public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapte
 		http.csrf().csrfTokenRepository(csrfRepository);
 		http.authorizeRequests().anyRequest().authenticated();
 		http.authorizeRequests().antMatchers("/public/**").permitAll();
-		List<Route> routes = ConfigurationAccessor.getRoutes();
+		Iterable<Route> routes = routeRepository.findAll();
 		for (Route route : routes) {
 			for (String role : route.getPermissions()) {
 				if (!role.equals("NONE")) {
@@ -39,7 +42,7 @@ public class WebSecurityConfigurationAdapter extends WebSecurityConfigurerAdapte
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		List<Route> routes = ConfigurationAccessor.getRoutes();
+		Iterable<Route> routes = routeRepository.findAll();
 		for (Route route : routes) {
 			for (String role : route.getPermissions()) {
 				if (role.equals("NONE")) {

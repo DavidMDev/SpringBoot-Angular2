@@ -1,11 +1,35 @@
 package com.web.atrio.routes.models;
 
-import org.springframework.http.HttpMethod;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
+import org.springframework.http.HttpMethod;
+@Entity
 public class Route {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+	
+	@NotNull
 	private String url;
+	
+	@NotNull
 	private String[] permissions;
+	
+	@NotNull
 	private HttpMethod method;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getUrl() {
 		return url;

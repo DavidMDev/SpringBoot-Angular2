@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.configuration.ConfigurationException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.web.csrf.CsrfToken;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.web.atrio.routes.models.Route;
+import com.web.atrio.routes.repositories.RouteRepository;
 
 @Component
 @Configuration
@@ -28,6 +30,9 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 	private static final String RESPONSE_TOKEN_NAME = "X-XSRF-TOKEN";
 	private static final String BASIC_AUTH_HEADER_NAME = "Authorization";
 
+	@Autowired
+	RouteRepository routeRepository;
+	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
@@ -82,12 +87,8 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 	}
 
 	private boolean checkUrl(String url, String method) {
-		List<Route> routes = null;
-		try {
-			routes = ConfigurationAccessor.getPublicRoutes();
-		} catch (ConfigurationException e) {
-			e.printStackTrace();
-		}
+		Iterable<Route> routes = null;
+			routes = routeRepository.findAll();
 		boolean check = false;
 		for (Route route : routes) {
 			HttpMethod httpMethod = ConfigurationAccessor.getHttpMethodFromString(method);

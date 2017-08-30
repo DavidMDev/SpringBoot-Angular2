@@ -43,6 +43,8 @@ public class ConfigurationAccessor {
 	}
 
 	private static List<HierarchicalConfiguration> getXMLConfiguration() throws ConfigurationException {
+		
+		
 		XMLConfiguration configXML = new XMLConfiguration("settings.xml");
 		List<HierarchicalConfiguration> routesXML = configXML.configurationsAt("routes.route");
 		return routesXML;
@@ -74,4 +76,5 @@ public class ConfigurationAccessor {
 		}
 		return null;
 	}
+	
 }
