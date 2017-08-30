@@ -1,4 +1,4 @@
-package com.web.atrio.permissions.controllers;
+package com.web.atrio.routes.controllers;
 
 import java.util.List;
 
@@ -21,18 +21,19 @@ import com.web.atrio.users.utilities.UserService;
 @CrossOrigin
 @RestController
 @RequestMapping("/api/routes")
-public class PermissionsController {
+public class RoutesController {
 	@Autowired
 	AccountRepository accountRepository;
 	@Autowired
 	RouteRepository routeRepository;
-	
+
 	@RequestMapping("/")
-public ResponseEntity<List<Route>> getRoutes(HttpServletRequest request) throws UnauthorizedException{
+	public ResponseEntity<List<Route>> getRoutes(HttpServletRequest request) throws UnauthorizedException {
 		Account accountFromRequest = accountRepository.findByUsername(UserService.getUser(request));
-		if(!accountFromRequest.getRoles().contains("ADMIN")) {
+		if (!accountFromRequest.getRoles().contains("ADMIN")) {
 			throw new UnauthorizedException();
 		}
-	return new ResponseEntity(routeRepository.findAll(), HttpStatus.OK);	
+		return new ResponseEntity(routeRepository.findAll(), HttpStatus.OK);
 	}
+
 }
