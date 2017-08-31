@@ -120,6 +120,7 @@ public class CsrfTokenFilter extends OncePerRequestFilter {
 				}
 			}
 		}
+		
 		return publicRoutes;
 	}
 
